@@ -7,11 +7,91 @@
   <meta name="description" content="En personlig guide til området, lavet til Tiamotos besøgende.">
   <meta name="author" content="Tiamoto">
   <title>Ændringer | Tiamoto</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.scss">
 </head>
 
-<body>
+<body style="width: 100vw;">
+  <section style="width: 33%; float: left; border: 2px solid red;">
+    <h2>Upload new activity</h2>
 
+    <form action="js/upload.php" method="post" enctype="multipart/form-data">
+      <h3>Main Information</h3>
+      <label>Title*</label><br>  
+      <input type="text" name="title"><br> 
+      <br>
+      <label>Activity Category*</label><br>  
+      <input type="radio" name="cat" value="dining"> Dining Out <br>
+      <input type="radio" name="cat" value="city"> Exploring the City <br>
+      <input type="radio" name="cat" value="outdoor"> Relaxed Outdoor Activities <br>
+      <input type="radio" name="cat" value="amusement"> Amusement <br>
+      <input type="radio" name="cat" value="learning"> Learning <br>
+      <input type="radio" name="cat" value="active"> Active <br>
+      <br>
+      <label>Price Class*</label><br>  
+      <input type="radio" name="price" value="$"> $ <br>
+      <input type="radio" name="price" value="$$"> $$ <br>
+      <input type="radio" name="price" value="$$$"> $$$ <br>
+      <br>
+      <label>Indoors / Outdoors*</label><br>  
+      <input type="radio" name="indoors" value="true"> Indoor <br>
+      <input type="radio" name="indoors" value="false"> Outdoor <br>
+      <br>
+
+      <h3>Activity Description</h3>
+      <label>Introduction</label><br>  
+      <input type="text" name="intro"><br> 
+      <br>
+      <label>Ideal For</label><br>  
+      <input type="text" name="ideal"><br> 
+      <br>
+      <label>Why We Like It</label><br>  
+      <input type="text" name="why"><br> 
+      <br>
+      <label>Can't Miss</label><br>  
+      <input type="text" name="cant"><br> 
+      <br>
+      <label>Good To Know</label><br>  
+      <input type="text" name="good"><br> 
+      <br>
+
+      <h3>Practical information</h3>
+      <label>Hours</label><br>
+      <input type="text" name="hoursOne" placeholder="Eg. Monday: Closed"><br>
+      <input type="text" name="hoursTwo" placeholder="Eg. Tue-Fri: 8-16:00"><br>
+      <input type="text" name="hoursThree" placeholder="Eg. Sat-Sun: 10-18:00"><br>
+      <br>
+      <label>Comment to hours</label><br>
+      <input type="text" name="hoursThree" placeholder="E.g. Closed during winter"><br>
+      <br>
+      <label>Address</label><br>
+      <input type="text" name="street" placeholder="Street"><br>
+      <input type="text" name="postal" placeholder="Postal code"><br>
+      <input type="text" name="city" placeholder="City"><br>
+      <br>
+
+      <h3>Other</h3>
+      <label>Main Image Name</label><br> 
+      <input type="text" name="img" placeholder="E.g. beach.jpg"><br>
+      <br>
+      <label>Website URL</label><br>
+      <input type="text" name="web" placeholder="E.g. www.example.com"><br>
+      <br>
+  
+      <input type="submit" value="Upload New Activity" name="submit">
+    </form>
+  </section>
+
+  <section style="width: 33%; float: left; border: 2px solid green;">
+    <h2>Upload image</h2>
+
+    <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
+      <h3>Add Image</h3>
+      <label>Select Image</label><br> 
+      <input type="file" name="fileToUpload" id="fileToUpload"><br>
+      <br>
+      <input type="submit" value="Upload New Image" name="submit">
+    </form>
+  </section>
 
   <!-- main js file -->
   <script src="js/main.js"></script>

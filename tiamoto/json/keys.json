@@ -1,6 +1,4 @@
 {
-  "keys": [{
-    "userOne": "password",
-    "userTwo": "password"
-  }]
-  }
+  "user": "tiamoto",
+  "key": "1234"
+}
