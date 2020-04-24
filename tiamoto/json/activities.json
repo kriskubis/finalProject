@@ -1,13 +1,14 @@
 {
     "activities": [{
-      "title": "Ree Park Safari",
+      "title": "Ree Park Safari (Test)",
       "score": "0",
       "cat": "Amusement",
       "dist": 6,
       "price": "$$$",
       "img": "",
       "indoors": false,
-      "descrip": [{
+      "web": "https://reepark.dk/",
+      "description": [{
         "intro": "Tag familien med til dyrenes verden. I Djurslands store dyrepark møder du dyr fra 4 kontinenter i naturskønne omgivelser.",
         "ideal": "Families",
         "why": "Qwerty",
