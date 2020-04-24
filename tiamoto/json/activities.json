@@ -1,16 +1,18 @@
 {
     "activities": [{
       "title": "Ree Park Safari",
+      "score": "0",
+      "cat": "Amusement",
       "dist": 6,
       "price": "$$$",
       "img": "",
       "indoors": false,
       "descrip": [{
         "intro": "Tag familien med til dyrenes verden. I Djurslands store dyrepark møder du dyr fra 4 kontinenter i naturskønne omgivelser.",
-        "idealFor": "Families",
-        "whyWeLikeIt": "Qwerty",
-        "cantMiss": "Qwerty",
-        "goodToKnow": "Qwerty"
+        "ideal": "Families",
+        "why": "Qwerty",
+        "cant": "Qwerty",
+        "good": "Qwerty"
       }],
       "address": [{
         "road": "Stubbe Søvej 15",
