@@ -4,6 +4,7 @@
       "dist": 6,
       "price": "$$$",
       "img": "",
+      "indoors": false,
       "descrip": [{
         "intro": "Tag familien med til dyrenes verden. I Djurslands store dyrepark møder du dyr fra 4 kontinenter i naturskønne omgivelser.",
         "idealFor": "Families",
