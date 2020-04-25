@@ -1,0 +1,92 @@
+// 88888888ba                                      88                    
+// 88      "8b                                     88    ,d               
+// 88      ,8P                                     88    88               
+// 88aaaaaa8P'  ,adPPYba,  ,adPPYba,  88       88  88  MM88MMM   
+// 88""""88'   a8P_____88  I8[    ""  88       88  88    88     
+// 88    `8b   8PP"""""""   `"Y8ba,   88       88  88    88     
+// 88     `8b  "8b,   ,aa  aa    ]8I  "8a,   ,a88  88    88,    
+// 88      `8b  `"Ybbd8"'  `"YbbdP"'   `"YbbdP'Y8  88    "Y888 
+
+// (Recommendations)
+
+// Card styling
+#activityGrid {
+    border: 2px solid blue;
+    height: 100%;
+}
+
+.activityCard {
+    width: 350px;
+    height: 470px;
+    margin: 40px;
+    background-size: auto 270px;
+    border-radius: 28px;
+    border: 2px solid #cccccc;
+    float: left;
+    @include shadow;
+
+    h4 {
+        font-size: 40px;
+        text-align: right;
+        line-height: 46px;
+    }
+    h5 {
+        font-size: 32px;
+        text-align: right;
+        line-height: 36px;
+    }
+    h6 {
+        font-size: 28px;
+    }
+}
+
+.card-head {
+    height: 220px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 25px 25px 0px 0px;
+    border-right: inset 2px solid $light-grey;
+    border-top: inset 2px solid $light-grey;
+    border-left: inset 2px solid $light-grey;
+    padding: 25px;
+    color: $white;
+}
+
+.card-description {
+    height: 150px;
+    background-color: rgba(250, 250, 250, 1);
+    border-radius: 0px 0px 25px 25px;
+    border-right: inset 2px solid $light-grey;
+    border-bottom: inset 2px solid $light-grey;
+    border-left: inset 2px solid $light-grey;
+    padding: 25px;
+    color: $dark-grey;
+}
+
+.card-btn {
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    position: relative;
+    top: -235px;
+    left: 250px;    
+}
+
+// Match category with background colour
+.dining-bg {
+    background-color: $dining;
+}
+.city-bg {
+    background-color: $city;
+}
+.outdoor-bg {
+    background-color: $outdoor;
+}
+.amusement-bg {
+    background-color: $amusement;
+}
+.learning-bg {
+    background-color: $learning;
+}
+.active-bg {
+    background-color: $active;
+}

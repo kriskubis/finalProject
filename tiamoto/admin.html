@@ -6,18 +6,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="En personlig guide til området, lavet til Tiamotos besøgende.">
   <meta name="author" content="Tiamoto">
-  <title>Ændringer | Tiamoto</title>
-  <link rel="stylesheet" href="css/main.scss">
+  <title>Activity Updates | Tiamoto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Lora:wght@600&family=Spartan&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body style="width: 100vw;">
-  <section style="width: 33%; float: left; border: 2px solid red;">
+
+
+
+
+
+
+
+  <section class="admin-section">
+    <h2>Edit existing activity</h2>
+
+    <form action="js/update.js" method="post" enctype="multipart/form-data">
+      <h3>Step 1: Choose the activity</h3>
+      <input type="radio" name="actTitle" value="Ree Park Safari (TEST)"> Ree Park Safari (TEST) <br>
+      <input type="radio" name="actTitle" value="Seal Safari (TEST)"> Seal Safari (TEST) <br>
+      <br>
+
+      <h3>Step 2: Choose a field</h3>
+      <input type="radio" name="field" value="price"> Price <br>
+      <input type="radio" name="field" value="cat"> Category <br>
+      <input type="radio" name="field" value="indoor"> Indoors / Outdoors <br>
+      <input type="radio" name="field" value="Intro"> Introduction <br>
+      <input type="radio" name="field" value="ideal"> Ideal For <br>
+      <input type="radio" name="field" value="why"> Why We Like It <br>
+      <input type="radio" name="field" value="cant"> Can't Miss <br>
+      <input type="radio" name="field" value="good"> Good To Know <br>
+      <input type="radio" name="field" value="hoursOne"> Hours (1st line) <br>
+      <input type="radio" name="field" value="hoursTwo"> Hours (2nd line) <br>
+      <input type="radio" name="field" value="hoursThree"> Hours (3rd line) <br>
+      <input type="radio" name="field" value="hoursComment"> Comment to "Hours" <br>
+      <input type="radio" name="field" value="street"> Street name and number <br>
+      <input type="radio" name="field" value="postal"> Postal code <br>
+      <input type="radio" name="field" value="city"> City <br>
+      <input type="radio" name="field" value="img"> Main Image Name <br>
+      <input type="radio" name="field" value="web"> Activity website <br>
+      <br> 
+
+      <h3>Step 3: Type in new field information</h3>
+      <input type="text" name="newText" size="50"><br>
+      <br> 
+
+      <h3>Step 4: Save</h3>
+      <input type="submit" value="Save" name="submit">
+    </form>
+  </section>
+
+
+
+
+
+
+
+
+  <section class="admin-section">
     <h2>Upload new activity</h2>
 
-    <form action="js/upload.php" method="post" enctype="multipart/form-data">
-      <h3>Main Information</h3>
+    <form action="js/upload.js" method="post" enctype="multipart/form-data">
+      <h3>Step 1: Enter main information</h3>
       <label>Title*</label><br>  
-      <input type="text" name="title"><br> 
+      <input type="text" name="title" size="50" placeholder="(Max. 30 characters)"><br> 
       <br>
       <label>Activity Category*</label><br>  
       <input type="radio" name="cat" value="dining"> Dining Out <br>
@@ -37,64 +90,73 @@
       <input type="radio" name="indoors" value="false"> Outdoor <br>
       <br>
 
-      <h3>Activity Description</h3>
+      <h3>Step 2: Enter activity description</h3>
       <label>Introduction</label><br>  
-      <input type="text" name="intro"><br> 
+      <input type="text" name="intro" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
       <br>
       <label>Ideal For</label><br>  
-      <input type="text" name="ideal"><br> 
+      <input type="text" name="ideal" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
       <br>
       <label>Why We Like It</label><br>  
-      <input type="text" name="why"><br> 
+      <input type="text" name="why" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
       <br>
       <label>Can't Miss</label><br>  
-      <input type="text" name="cant"><br> 
+      <input type="text" name="cant" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
       <br>
       <label>Good To Know</label><br>  
-      <input type="text" name="good"><br> 
+      <input type="text" name="good" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
       <br>
 
-      <h3>Practical information</h3>
+      <h3>Step 3: Enter practical information</h3>
       <label>Hours</label><br>
       <input type="text" name="hoursOne" placeholder="Eg. Monday: Closed"><br>
       <input type="text" name="hoursTwo" placeholder="Eg. Tue-Fri: 8-16:00"><br>
       <input type="text" name="hoursThree" placeholder="Eg. Sat-Sun: 10-18:00"><br>
       <br>
       <label>Comment to hours</label><br>
-      <input type="text" name="hoursThree" placeholder="E.g. Closed during winter"><br>
+      <input type="text" name="hoursComment"  size="50" placeholder="E.g. Closed during winter (Max. 30 characters)"><br>
       <br>
       <label>Address</label><br>
       <input type="text" name="street" placeholder="Street"><br>
       <input type="text" name="postal" placeholder="Postal code"><br>
       <input type="text" name="city" placeholder="City"><br>
       <br>
-
-      <h3>Other</h3>
       <label>Main Image Name</label><br> 
       <input type="text" name="img" placeholder="E.g. beach.jpg"><br>
       <br>
-      <label>Website URL</label><br>
+      <label>Website URL (Optional)</label><br>
       <input type="text" name="web" placeholder="E.g. www.example.com"><br>
       <br>
-  
-      <input type="submit" value="Upload New Activity" name="submit">
+
+      <h3>Step 4: Save</h3>
+      <input type="submit" value="Save" name="submit">
     </form>
   </section>
 
-  <section style="width: 33%; float: left; border: 2px solid green;">
+
+
+
+
+
+
+
+  <section class="admin-section">
     <h2>Upload image</h2>
 
     <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
-      <h3>Add Image</h3>
+      <h3>Step 1: Choose an image</h3>
       <label>Select Image</label><br> 
       <input type="file" name="fileToUpload" id="fileToUpload"><br>
       <br>
-      <input type="submit" value="Upload New Image" name="submit">
+      <h3>Step 2: Upload</h3>
+      <input type="submit" value="Upload image" name="submit">
     </form>
   </section>
 
   <!-- main js file -->
   <script src="js/main.js"></script>
+  <script src="js/upload.js"></script>
+  <script src="js/update.js"></script>
 </body>
 
 </html>
