@@ -17,8 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(weather);
 
         if (weather == "Sunny") {
-            alert("SUNNY BACKGROUND NOW")
+          alert("The weather is " + weather)
+          // Change background here
         };
+
+        if (weather == "Partly cloudy") {
+          alert("The weather is " + weather)
+          // Change background here
+      };
         
       });
   

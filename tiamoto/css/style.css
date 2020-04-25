@@ -1,0 +1,120 @@
+html, p {
+  color: #3d3d3d;
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+h1 {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+h2, h3, h4, h5, h6, label {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.btn {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  -webkit-box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+}
+
+.admin-section {
+  width: 40%;
+  float: left;
+  border: 2px solid green;
+  margin: 40px;
+}
+
+#activityGrid {
+  border: 2px solid blue;
+  height: 100%;
+}
+
+.activityCard {
+  width: 350px;
+  height: 470px;
+  margin: 40px;
+  background-size: auto 270px;
+  border-radius: 28px;
+  border: 2px solid #cccccc;
+  float: left;
+  -webkit-box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
+}
+.activityCard h4 {
+  font-size: 40px;
+  text-align: right;
+  line-height: 46px;
+}
+.activityCard h5 {
+  font-size: 32px;
+  text-align: right;
+  line-height: 36px;
+}
+.activityCard h6 {
+  font-size: 28px;
+}
+
+.card-head {
+  height: 220px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 25px 25px 0px 0px;
+  border-right: inset 2px solid #cccccc;
+  border-top: inset 2px solid #cccccc;
+  border-left: inset 2px solid #cccccc;
+  padding: 25px;
+  color: #ffffff;
+}
+
+.card-description {
+  height: 150px;
+  background-color: #fafafa;
+  border-radius: 0px 0px 25px 25px;
+  border-right: inset 2px solid #cccccc;
+  border-bottom: inset 2px solid #cccccc;
+  border-left: inset 2px solid #cccccc;
+  padding: 25px;
+  color: #3d3d3d;
+}
+
+.card-btn {
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+  position: relative;
+  top: -235px;
+  left: 250px;
+}
+
+.dining-bg {
+  background-color: #8e97b5;
+}
+
+.city-bg {
+  background-color: #df824e;
+}
+
+.outdoor-bg {
+  background-color: #6b8240;
+}
+
+.amusement-bg {
+  background-color: #f6c14d;
+}
+
+.learning-bg {
+  background-color: #c8956f;
+}
+
+.active-bg {
+  background-color: #a598d9;
+}
+
+/*# sourceMappingURL=style.css.map */
