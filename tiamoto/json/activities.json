@@ -1,7 +1,7 @@
 {
   "activities": [{
-    "title": "Ree Park Safari (TEST)",
-    "score": "0",
+    "title": "Ree Park",
+    "score": 0,
     "cat": "amusement",
     "dist": 6,
     "price": "$$$",
@@ -21,8 +21,8 @@
     "hoursThree": "Sat-Sun: 8-18:00",
     "hoursComment": "Closed June-November" 
   }, {
-    "title": "Seal Safari (TEST)",
-    "score": "0",
+    "title": "Seal Safari",
+    "score": 0,
     "cat": "active",
     "dist": 18,
     "price": "$$$",
