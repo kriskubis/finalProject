@@ -24,32 +24,39 @@
 
     <form action="js/update.js" method="post" enctype="multipart/form-data">
       <h3>Step 1: Choose the activity</h3>
-      <input type="radio" name="actTitle" value="Ree Park Safari (TEST)"> Ree Park Safari (TEST) <br>
-      <input type="radio" name="actTitle" value="Seal Safari (TEST)"> Seal Safari (TEST) <br>
+      <div id="activityOptions">
+        <!-- Appends options from activities.json -->
+      </div>
       <br>
 
       <h3>Step 2: Choose a field</h3>
-      <input type="radio" name="field" value="price"> Price <br>
-      <input type="radio" name="field" value="cat"> Category <br>
-      <input type="radio" name="field" value="indoor"> Indoors / Outdoors <br>
-      <input type="radio" name="field" value="Intro"> Introduction <br>
-      <input type="radio" name="field" value="ideal"> Ideal For <br>
-      <input type="radio" name="field" value="why"> Why We Like It <br>
-      <input type="radio" name="field" value="cant"> Can't Miss <br>
-      <input type="radio" name="field" value="good"> Good To Know <br>
-      <input type="radio" name="field" value="hoursOne"> Hours (1st line) <br>
-      <input type="radio" name="field" value="hoursTwo"> Hours (2nd line) <br>
-      <input type="radio" name="field" value="hoursThree"> Hours (3rd line) <br>
-      <input type="radio" name="field" value="hoursComment"> Comment to "Hours" <br>
-      <input type="radio" name="field" value="street"> Street name and number <br>
-      <input type="radio" name="field" value="postal"> Postal code <br>
-      <input type="radio" name="field" value="city"> City <br>
-      <input type="radio" name="field" value="img"> Main Image Name <br>
-      <input type="radio" name="field" value="web"> Activity website <br>
+      <input type="radio" name="field" value="price" onClick="priceOptions()"> Price <br>
+      <input type="radio" name="field" value="cat" onClick="catOptions()"> Category <br>
+      <input type="radio" name="field" value="indoor" onClick="indoorOptions()"> Indoors / Outdoors <br>
+      <input type="radio" name="field" value="intro" onClick="getFieldValue(); getContent()"> Introduction <br>
+      <input type="radio" name="field" value="ideal" onClick="getFieldValue(); getContent()"> Ideal For <br>
+      <input type="radio" name="field" value="why" onClick="getFieldValue(); getContent()"> Why We Like It <br>
+      <input type="radio" name="field" value="cant" onClick="getFieldValue(); getContent()"> Can't Miss <br>
+      <input type="radio" name="field" value="good" onClick="getFieldValue(); getContent()"> Good To Know <br>
+      <input type="radio" name="field" value="hoursOne" onClick="getFieldValue(); getContent()"> Hours (1st line) <br>
+      <input type="radio" name="field" value="hoursTwo" onClick="getFieldValue(); getContent()"> Hours (2nd line) <br>
+      <input type="radio" name="field" value="hoursThree" onClick="getFieldValue(); getContent()"> Hours (3rd line) <br>
+      <input type="radio" name="field" value="hoursComment" onClick="getFieldValue(); getContent()"> Comment to "Hours" <br>
+      <input type="radio" name="field" value="street" onClick="getFieldValue(); getContent()"> Street name and number <br>
+      <input type="radio" name="field" value="postal" onClick="getFieldValue(); getContent()"> Postal code <br>
+      <input type="radio" name="field" value="city" onClick="getFieldValue(); getContent()"> City <br>
+      <input type="radio" name="field" value="img" onClick="getFieldValue(); getContent()"> Main Image Name <br>
+      <input type="radio" name="field" value="web" onClick="getFieldValue(); getContent()"> Activity website <br>
+      <div id="activityFields">
+        <!-- Appends options from activities.json -->
+      </div>
       <br> 
 
       <h3>Step 3: Type in new field information</h3>
-      <input type="text" name="newText" size="50"><br>
+      <div id="infoField">
+        <p><i>Make sure you have completed in step 1 and 2.</i></p>
+        <!-- Appends input field with it's current content or available options -->
+      </div>
       <br> 
 
       <h3>Step 4: Save</h3>
@@ -155,6 +162,7 @@
 
   <!-- main js file -->
   <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
   <script src="js/upload.js"></script>
   <script src="js/update.js"></script>
 </body>
