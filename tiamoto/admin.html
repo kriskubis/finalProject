@@ -8,157 +8,166 @@
   <meta name="author" content="Tiamoto">
   <title>Activity Updates | Tiamoto</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Lora:wght@600&family=Spartan&display=swap" rel="stylesheet">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body style="width: 100vw;">
+  <header>
+    <nav id="admin-nav">
+      <h1 id="admin-title">Page administration</h1>
+      <button id="addBtn" class="btn" onClick>Add new content</button>
+      <button id="editBtn" class="btn">Edit content</button>
+    </nav>
+  </header>
 
+  <main>
+    <section id="edit-section" class="admin-section hidden">
+      <form action="js/update.js" method="post" enctype="multipart/form-data">
+        
+        <div class="half-column">
+        <h3>Step 1: Choose the activity</h3>
+        <div id="activityOptions">
+          <!-- Appends options from activities.json -->
+        </div>
+        <br>
+        <h3>Step 2: Choose a field</h3>
+        <input type="radio" name="field" value="price" onClick="priceOptions()"> Price <br>
+        <input type="radio" name="field" value="cat" onClick="catOptions()"> Category <br>
+        <input type="radio" name="field" value="indoor" onClick="indoorOptions()"> Indoors / Outdoors <br>
+        <input type="radio" name="field" value="intro" onClick="getFieldValue(); getContent()"> Introduction <br>
+        <input type="radio" name="field" value="ideal" onClick="getFieldValue(); getContent()"> Ideal For <br>
+        <input type="radio" name="field" value="why" onClick="getFieldValue(); getContent()"> Why We Like It <br>
+        <input type="radio" name="field" value="cant" onClick="getFieldValue(); getContent()"> Can't Miss <br>
+        <input type="radio" name="field" value="good" onClick="getFieldValue(); getContent()"> Good To Know <br>
+        <input type="radio" name="field" value="hoursOne" onClick="getFieldValue(); getContent()"> Hours (1st line) <br>
+        <input type="radio" name="field" value="hoursTwo" onClick="getFieldValue(); getContent()"> Hours (2nd line) <br>
+        <input type="radio" name="field" value="hoursThree" onClick="getFieldValue(); getContent()"> Hours (3rd line) <br>
+        <input type="radio" name="field" value="hoursComment" onClick="getFieldValue(); getContent()"> Comment to "Hours" <br>
+        <input type="radio" name="field" value="street" onClick="getFieldValue(); getContent()"> Street name and number <br>
+        <input type="radio" name="field" value="postal" onClick="getFieldValue(); getContent()"> Postal code <br>
+        <input type="radio" name="field" value="city" onClick="getFieldValue(); getContent()"> City <br>
+        <input type="radio" name="field" value="img" onClick="getFieldValue(); getContent()"> Main Image Name <br>
+        <input type="radio" name="field" value="web" onClick="getFieldValue(); getContent()"> Activity website <br>
+        <br>
+        </div>
 
-
-
-
-
-
-  <section class="admin-section">
-    <h2>Edit existing activity</h2>
-
-    <form action="js/update.js" method="post" enctype="multipart/form-data">
-      <h3>Step 1: Choose the activity</h3>
-      <div id="activityOptions">
-        <!-- Appends options from activities.json -->
+        <div class="half-column">
+        <h3>Step 3: Type in new field information</h3>
+        <div id="infoField">
+          <p><i>Make sure you have completed in step 1 and 2.</i></p>
+          <!-- Appends input field with it's current content or available options -->
+        </div>
+        <br> 
+        <h3>Step 4: Save</h3>
+        <input type="submit" value="Save" name="submit">
       </div>
-      <br>
 
-      <h3>Step 2: Choose a field</h3>
-      <input type="radio" name="field" value="price" onClick="priceOptions()"> Price <br>
-      <input type="radio" name="field" value="cat" onClick="catOptions()"> Category <br>
-      <input type="radio" name="field" value="indoor" onClick="indoorOptions()"> Indoors / Outdoors <br>
-      <input type="radio" name="field" value="intro" onClick="getFieldValue(); getContent()"> Introduction <br>
-      <input type="radio" name="field" value="ideal" onClick="getFieldValue(); getContent()"> Ideal For <br>
-      <input type="radio" name="field" value="why" onClick="getFieldValue(); getContent()"> Why We Like It <br>
-      <input type="radio" name="field" value="cant" onClick="getFieldValue(); getContent()"> Can't Miss <br>
-      <input type="radio" name="field" value="good" onClick="getFieldValue(); getContent()"> Good To Know <br>
-      <input type="radio" name="field" value="hoursOne" onClick="getFieldValue(); getContent()"> Hours (1st line) <br>
-      <input type="radio" name="field" value="hoursTwo" onClick="getFieldValue(); getContent()"> Hours (2nd line) <br>
-      <input type="radio" name="field" value="hoursThree" onClick="getFieldValue(); getContent()"> Hours (3rd line) <br>
-      <input type="radio" name="field" value="hoursComment" onClick="getFieldValue(); getContent()"> Comment to "Hours" <br>
-      <input type="radio" name="field" value="street" onClick="getFieldValue(); getContent()"> Street name and number <br>
-      <input type="radio" name="field" value="postal" onClick="getFieldValue(); getContent()"> Postal code <br>
-      <input type="radio" name="field" value="city" onClick="getFieldValue(); getContent()"> City <br>
-      <input type="radio" name="field" value="img" onClick="getFieldValue(); getContent()"> Main Image Name <br>
-      <input type="radio" name="field" value="web" onClick="getFieldValue(); getContent()"> Activity website <br>
-      <div id="activityFields">
-        <!-- Appends options from activities.json -->
-      </div>
-      <br> 
+      </form>
+    </section>
+  
+  
+  
+  
+  
+  
+  
+  
+    <section id="add-section" class="admin-section">
+      <form action="js/upload.js" method="post" enctype="multipart/form-data">
+        
+        <div class="half-column">
+        <h3>Step 1: Enter main information</h3>
+        <label>Title*</label><br>  
+        <input type="text" name="title" size="50" placeholder="(Max. 30 characters)"><br> 
+        <br>
+        <label>Activity Category*</label><br>  
+        <input type="radio" name="cat" value="dining"> Dining Out <br>
+        <input type="radio" name="cat" value="city"> Exploring the City <br>
+        <input type="radio" name="cat" value="outdoor"> Relaxed Outdoor Activities <br>
+        <input type="radio" name="cat" value="amusement"> Amusement <br>
+        <input type="radio" name="cat" value="learning"> Learning <br>
+        <input type="radio" name="cat" value="active"> Active <br>
+        <br>
+        <label>Price Class*</label><br>  
+        <input type="radio" name="price" value="$"> $ <br>
+        <input type="radio" name="price" value="$$"> $$ <br>
+        <input type="radio" name="price" value="$$$"> $$$ <br>
+        <br>
+        <label>Indoors / Outdoors*</label><br>  
+        <input type="radio" name="indoors" value="true"> Indoor <br>
+        <input type="radio" name="indoors" value="false"> Outdoor <br>
+        <br>
+        <h3>Step 2: Enter activity description</h3>
+        <label>Introduction</label><br>  
+        <input type="text" name="intro" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <br>
+        <label>Ideal For</label><br>  
+        <input type="text" name="ideal" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <br>
+        <label>Why We Like It</label><br>  
+        <input type="text" name="why" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <br>
+        <label>Can't Miss</label><br>  
+        <input type="text" name="cant" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <br>
+        <label>Good To Know</label><br>  
+        <input type="text" name="good" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <br>
+        </div>
 
-      <h3>Step 3: Type in new field information</h3>
-      <div id="infoField">
-        <p><i>Make sure you have completed in step 1 and 2.</i></p>
-        <!-- Appends input field with it's current content or available options -->
-      </div>
-      <br> 
+        <div class="half-column">
+        <h3>Step 3: Enter practical information</h3>
+        <label>Hours</label><br>
 
-      <h3>Step 4: Save</h3>
-      <input type="submit" value="Save" name="submit">
-    </form>
-  </section>
+        <div id="hours">
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+          <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
+        </div>
+        
+        <h6>Monday</h6><input type="text" name="hoursOne" placeholder="Eg. Monday: Closed"><br>
+        <input type="text" name="hoursTwo" placeholder="Eg. Tue-Fri: 8-16:00"><br>
+        <input type="text" name="hoursThree" placeholder="Eg. Sat-Sun: 10-18:00"><br>
+        <br>
+        <label>Comment to hours</label><br>
+        <input type="text" name="hoursComment"  size="50" placeholder="E.g. Closed during winter (Max. 30 characters)"><br>
+        <br>
+        <label>Address</label><br>
+        <input type="text" name="street" placeholder="Street"><br>
+        <input type="text" name="postal" placeholder="Postal code"><br>
+        <input type="text" name="city" placeholder="City"><br>
+        <br>
+        <label>Main Image Name</label><br> 
+        <input type="text" name="img" placeholder="E.g. beach.jpg"><br>
+        <br>
+        <label>Website URL (Optional)</label><br>
+        <input type="text" name="web" placeholder="E.g. www.example.com"><br>
+        <br>
+        <h3>Step 4: Save</h3>
+        <input type="submit" value="Save" name="submit">
+      </form>
+  
+  
+  
+      <h2>Upload image</h2>
+      <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
+        <h3>Step 1: Choose an image</h3>
+        <label>Select Image</label><br> 
+        <input type="file" name="fileToUpload" id="fileToUpload"><br>
+        <br>
+        <h3>Step 2: Upload</h3>
+        <input type="submit" value="Upload image" name="submit">
+      </form>
+    </div>
+    </section>
 
+  </main>
 
-
-
-
-
-
-
-  <section class="admin-section">
-    <h2>Upload new activity</h2>
-
-    <form action="js/upload.js" method="post" enctype="multipart/form-data">
-      <h3>Step 1: Enter main information</h3>
-      <label>Title*</label><br>  
-      <input type="text" name="title" size="50" placeholder="(Max. 30 characters)"><br> 
-      <br>
-      <label>Activity Category*</label><br>  
-      <input type="radio" name="cat" value="dining"> Dining Out <br>
-      <input type="radio" name="cat" value="city"> Exploring the City <br>
-      <input type="radio" name="cat" value="outdoor"> Relaxed Outdoor Activities <br>
-      <input type="radio" name="cat" value="amusement"> Amusement <br>
-      <input type="radio" name="cat" value="learning"> Learning <br>
-      <input type="radio" name="cat" value="active"> Active <br>
-      <br>
-      <label>Price Class*</label><br>  
-      <input type="radio" name="price" value="$"> $ <br>
-      <input type="radio" name="price" value="$$"> $$ <br>
-      <input type="radio" name="price" value="$$$"> $$$ <br>
-      <br>
-      <label>Indoors / Outdoors*</label><br>  
-      <input type="radio" name="indoors" value="true"> Indoor <br>
-      <input type="radio" name="indoors" value="false"> Outdoor <br>
-      <br>
-
-      <h3>Step 2: Enter activity description</h3>
-      <label>Introduction</label><br>  
-      <input type="text" name="intro" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
-      <br>
-      <label>Ideal For</label><br>  
-      <input type="text" name="ideal" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
-      <br>
-      <label>Why We Like It</label><br>  
-      <input type="text" name="why" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
-      <br>
-      <label>Can't Miss</label><br>  
-      <input type="text" name="cant" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
-      <br>
-      <label>Good To Know</label><br>  
-      <input type="text" name="good" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
-      <br>
-
-      <h3>Step 3: Enter practical information</h3>
-      <label>Hours</label><br>
-      <input type="text" name="hoursOne" placeholder="Eg. Monday: Closed"><br>
-      <input type="text" name="hoursTwo" placeholder="Eg. Tue-Fri: 8-16:00"><br>
-      <input type="text" name="hoursThree" placeholder="Eg. Sat-Sun: 10-18:00"><br>
-      <br>
-      <label>Comment to hours</label><br>
-      <input type="text" name="hoursComment"  size="50" placeholder="E.g. Closed during winter (Max. 30 characters)"><br>
-      <br>
-      <label>Address</label><br>
-      <input type="text" name="street" placeholder="Street"><br>
-      <input type="text" name="postal" placeholder="Postal code"><br>
-      <input type="text" name="city" placeholder="City"><br>
-      <br>
-      <label>Main Image Name</label><br> 
-      <input type="text" name="img" placeholder="E.g. beach.jpg"><br>
-      <br>
-      <label>Website URL (Optional)</label><br>
-      <input type="text" name="web" placeholder="E.g. www.example.com"><br>
-      <br>
-
-      <h3>Step 4: Save</h3>
-      <input type="submit" value="Save" name="submit">
-    </form>
-  </section>
-
-
-
-
-
-
-
-
-  <section class="admin-section">
-    <h2>Upload image</h2>
-
-    <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
-      <h3>Step 1: Choose an image</h3>
-      <label>Select Image</label><br> 
-      <input type="file" name="fileToUpload" id="fileToUpload"><br>
-      <br>
-      <h3>Step 2: Upload</h3>
-      <input type="submit" value="Upload image" name="submit">
-    </form>
-  </section>
 
   <!-- main js file -->
   <script src="js/main.js"></script>
