@@ -38,8 +38,34 @@ h2, h3, h4, h5, h6, label {
 }
 
 // ELEMENTS
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    max-width: 100%;
+}
+
 .btn {
     font-family: $font-headline;
     font-weight: 700;
-    @include shadow
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $grey;
+    @include shadow-slim
+}
+
+.btn:hover {
+    background-color: $mint;
+}
+
+.btn-active {
+    background-color: $green;
+}
+
+.hidden {
+    display: none;
 }

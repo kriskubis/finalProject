@@ -1,3 +1,32 @@
+//----------------------- SINGLE-PAGE FUNCTIONALITY -----------------------//
+// Change active button (the colour green) with jQuery
+$(function() {
+    $(".btn").click(function() {
+        $(".btn").removeClass("btn-active");
+        $(this).addClass("btn-active");  
+    });
+});
+
+// Hide and show sections
+$(function() {
+    $("#addBtn").click(function() {
+        $("#admin-title").text("Adding new activity");
+        $("#edit-section").addClass("hidden");
+        $("#add-section").removeClass("hidden");
+    });
+});
+
+$(function() {
+    $("#editBtn").click(function() {
+        $("#admin-title").text("Editing existing activity");
+        $("#add-section").addClass("hidden");
+        $("#edit-section").removeClass("hidden");
+    });
+});
+
+
+
+
 //----------------------- EDIT EXISTING ACTIVITY -----------------------//
 // Create json request "req"
 let req = new Request('json/activities.json');
@@ -66,7 +95,10 @@ function getContent() {
             //}
             
             infoField.innerHTML = `
-            <input type="text" name="newContent" size="50" maxlength="100" value="(${activity.intro})"><br>
+            <h4>Current text:</h4>
+            <p><i>${activity.intro}</i></p><br>
+            <h4>New text:</h4>
+            <input type="text" name="newContent" size="50" maxlength="100" placeholder="(Write the new text here)"><br>
             `;
         }
     }   
