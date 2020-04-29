@@ -8,17 +8,111 @@
 // 88      `8b  `"Ybbd8"'  `"YbbdP"'   `"YbbdP'Y8  88    "Y888 
 
 // (Recommendations)
+.map {
+    background-color: $sky;
+    height: 320px;
+    width:100%;
+}
+
+#map {
+    min-height: 100%;
+    top:0;
+    bottom:0;
+    width:100%;
+}
+
+#return {
+    background-color: $city;
+    a {
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+#expand-map {
+    text-align: center;
+    button {
+        background-color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 30px;
+        border: 0px solid white;
+        position: relative;
+        top: -25px;
+    }
+}
+
+.expanded {
+    height: 500px;
+}
+
+.rotate {
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+#first-column {
+    div {
+        width: 50%;
+        float: left;
+
+        &:nth-of-type(2) {
+            width: 45%;
+            padding-left: 45px;
+            float: left;
+        }
+    }
+}
+
+.result {
+    padding: 45px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    //justify-content: center;
+}
+
+.cat-colour {
+    height: 22px;
+    width: 22px;
+    border-radius: 15px;
+    float: left;
+    margin: 2px 0px 12.5px 10px;
+    position: relative;
+    bottom: -1px;
+
+    &:nth-of-type(1) {
+        background-color: $dining;
+    }
+    &:nth-of-type(2) {
+        background-color: $city;
+    }
+    &:nth-of-type(3) {
+        background-color: $outdoor;
+    }
+    &:nth-of-type(4) {
+        background-color: $amusement;
+    }
+    &:nth-of-type(5) {
+        background-color: $learning;
+    }
+    &:nth-of-type(6) {
+        background-color: $active;
+    }
+}
 
 // Card styling
 #activityGrid {
-    border: 2px solid blue;
     height: 100%;
 }
 
 .activityCard {
     width: 350px;
     height: 470px;
-    margin: 40px;
+    margin: 40px 40px 40px 0;
     background-size: auto 270px;
     border-radius: 28px;
     border: 2px solid #cccccc;
@@ -60,6 +154,13 @@
     border-left: inset 2px solid $light-grey;
     padding: 25px;
     color: $dark-grey;
+
+    p {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+    }
 }
 
 .card-btn {
@@ -68,7 +169,8 @@
     border-radius: 50px;
     position: relative;
     top: -235px;
-    left: 250px;    
+    left: 250px;
+    @include shadow-slim
 }
 
 // Match category with background colour

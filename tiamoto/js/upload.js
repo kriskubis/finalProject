@@ -1,1 +1,0 @@
-// Upload new activity

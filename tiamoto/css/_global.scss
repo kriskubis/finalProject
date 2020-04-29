@@ -12,15 +12,18 @@
 // Body Text: Optima, Regular (Spartan)
 
 // Variables
-$primary-colour: $dark-grey;
-
 $font-title: 'Lora', serif;
 $font-headline: 'Josefine Sans', sans-serif;
 $font-body: 'Spartan', sans-serif;
 
 // Styles
-html, p {
-    color: $primary-colour;
+html {
+    margin: 0;
+    padding: 0;
+    color: $dark-grey;
+}
+
+p {
     font-size: 24px;
     margin: 0 0 8px 0;
 }
@@ -31,8 +34,28 @@ h1 {
     margin: 0 0 8px 0;
 }
 
-h2, h3, h4, h5, h6, label {
+h2 {
+    font-family: $font-title;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    font-size: 68px;
+}
+
+h3, h4 {
     font-family: $font-headline;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    font-size: 28px;
+}
+
+h5 {
+    font-family: $font-headline;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    font-size: 22px;
+}
+
+h6, label {
     font-weight: 500;
     margin: 0 0 8px 0;
 }
@@ -47,11 +70,37 @@ main {
     max-width: 100%;
 }
 
+.page-info {
+    width: 100%;
+
+    .first-column {
+        width: 45%;
+        float: left;
+        margin-right: 25%;
+    }
+
+    .second-column {
+        width: 30%;
+        float: left;
+    }
+}
+
 .btn {
     font-family: $font-headline;
     font-weight: 700;
     font-size: 18px;
     padding: 10px 20px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $grey;
+    @include shadow-slim
+}
+
+.btn-slim {
+    font-family: $font-headline;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 6px 30px;
     border-radius: 5px;
     color: $white;
     background-color: $grey;
