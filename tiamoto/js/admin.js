@@ -3,7 +3,7 @@
 $(function() {
     $(".btn").click(function() {
         $(".btn").removeClass("btn-active");
-        $(this).addClass("btn-active");  
+        $(this).addClass("btn-active");
     });
 });
 
@@ -74,12 +74,12 @@ function indoorOptions() {
 
 // ...show current content in step 3
 function getContent() {
-    
+
     fetch(req)
     .then(function(response) {
         return response.json();
     })
-      
+
     .then(json => {
         appendOptions(json.activities);
     });
@@ -89,11 +89,11 @@ function getContent() {
 
     function appendOptions(activities) {
         for (let activity of activities) {
-            
+
             //if (title.includes(chosenActivity)) {
             //   console.log(activity.identifier)
             //}
-            
+
             infoField.innerHTML = `
             <h4>Current text:</h4>
             <p><i>${activity.intro}</i></p><br>
@@ -101,5 +101,44 @@ function getContent() {
             <input type="text" name="newContent" size="50" maxlength="100" placeholder="(Write the new text here)"><br>
             `;
         }
-    }   
+    }
 }
+
+//----------------------- PUSH DATA TO JSON -----------------------//
+// document.getElementById("submitButton").addEventListener("click", function(event){
+//   event.preventDefault()
+//   let data = {};
+//   let test = document.getElementById("test").value + document.getElementById("testD").value;
+// //  let test = document.getElementsByTagName("input").value;
+// console.log(test);
+// });
+
+
+
+
+  document.getElementById("submitButton").addEventListener("click", function(event){
+event.preventDefault()
+let obj = {
+  title: document.getElementById('titleField').value,
+  score: 0,
+  cat: document.getElementById('activityCategory').value,
+  dist: 0,
+  description: document.getElementById('descField').value,
+  price: document.getElementById('priceCategory').value,
+  space: document.getElementById('spaceField').value,
+  activity: document.getElementById('activityCategory').value,
+  idealFor: document.getElementById('idealField').value,
+  whyWeLikeIt: document.getElementById('whyField').value,
+  cantMiss: document.getElementById('cantField').value,
+  goodToKnow: document.getElementById('goodField').value,
+  hours: 0,
+  hourComment: document.getElementById('commentFIeld').value,
+  street: document.getElementById('streetField').value,
+  postalCode: document.getElementById('postalField').value,
+  city: document.getElementById('cityField').value,
+  imageName: document.getElementById('imageField').value,
+  websiteURL: document.getElementById('urlField').value,
+};
+var myJSON = JSON.stringify(obj);
+console.log(myJSON);
+})

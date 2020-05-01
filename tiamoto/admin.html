@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="dk">
 
 <head>
@@ -16,7 +16,7 @@
   <header>
     <nav id="admin-nav">
       <h1 id="admin-title">Page administration</h1>
-      <button id="addBtn" class="btn" onClick>Add new content</button>
+      <button id="addBtn" class="btn" =>Add new content</button>
       <button id="editBtn" class="btn">Edit content</button>
     </nav>
   </header>
@@ -24,7 +24,7 @@
   <main>
     <section id="edit-section" class="admin-section hidden">
       <form action="js/update.js" method="post" enctype="multipart/form-data">
-        
+
         <div class="half-column">
         <h3>Step 1: Choose the activity</h3>
         <div id="activityOptions">
@@ -58,61 +58,79 @@
           <p><i>Make sure you have completed in step 1 and 2.</i></p>
           <!-- Appends input field with it's current content or available options -->
         </div>
-        <br> 
+        <br>
         <h3>Step 4: Save</h3>
         <input type="submit" value="Save" name="submit">
       </div>
 
       </form>
     </section>
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
     <section id="add-section" class="admin-section">
-      <form action="js/upload.js" method="post" enctype="multipart/form-data">
-        
+      <form id="addForm" action="push.php" method="post" enctype="multipart/form-data">
+
         <div class="half-column">
         <h3>Step 1: Enter main information</h3>
-        <label>Title*</label><br>  
-        <input type="text" name="title" size="50" placeholder="(Max. 30 characters)"><br> 
+        <label>Title*</label><br>
+        <input id="titleField" type="text" name="title" size="50" placeholder="(Max. 30 characters)"><br>
         <br>
-        <label>Activity Category*</label><br>  
-        <input type="radio" name="cat" value="dining"> Dining Out <br>
+        <label>Activity Category*</label><br>
+        <select id="activityCategory">
+  <option value="Dining Out ">Dining Out </option>
+  <option value="Exploring the City">Exploring the City</option>
+  <option value="Relaxed Outdoor Activities">Relaxed Outdoor Activities</option>
+  <option value="Amusement">Amusement</option>
+  <option value="Learning">Learning</option>
+  <option value="Active">Active</option>
+</select>
+        <!-- <input type="radio" name="cat" value="dining"> Dining Out <br>
         <input type="radio" name="cat" value="city"> Exploring the City <br>
         <input type="radio" name="cat" value="outdoor"> Relaxed Outdoor Activities <br>
         <input type="radio" name="cat" value="amusement"> Amusement <br>
         <input type="radio" name="cat" value="learning"> Learning <br>
-        <input type="radio" name="cat" value="active"> Active <br>
+        <input type="radio" name="cat" value="active"> Active <br> -->
         <br>
-        <label>Price Class*</label><br>  
-        <input type="radio" name="price" value="$"> $ <br>
+        <label>Price Class*</label><br>
+        <select id="priceCategory">
+  <option value="$ ">$ </option>
+  <option value="$$">$$</option>
+  <option value="$$$">$$$</option>
+  </select>
+        <!-- <input type="radio" name="price" value="$"> $ <br>
         <input type="radio" name="price" value="$$"> $$ <br>
-        <input type="radio" name="price" value="$$$"> $$$ <br>
+        <input id="testD" type="radio" name="price" value="$$$"> $$$ <br> -->
         <br>
-        <label>Indoors / Outdoors*</label><br>  
-        <input type="radio" name="indoors" value="true"> Indoor <br>
-        <input type="radio" name="indoors" value="false"> Outdoor <br>
+        <label>Indoors / Outdoors*</label>
+        <br>
+        <select id="spaceField">
+          <option value="Indoor ">Indoor </option>
+          <option value="Outdoor">Outdoor</option>
+          </select>
+        <!-- <input type="radio" name="indoors" value="true"> Indoor <br>
+        <input type="radio" name="indoors" value="false"> Outdoor <br> -->
         <br>
         <h3>Step 2: Enter activity description</h3>
-        <label>Introduction</label><br>  
-        <input type="text" name="intro" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <label>Introduction</label><br>
+        <input id="descField" type="text" name="intro" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br>
         <br>
-        <label>Ideal For</label><br>  
-        <input type="text" name="ideal" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <label>Ideal For</label><br>
+        <input id="idealField" type="text" name="ideal" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br>
         <br>
-        <label>Why We Like It</label><br>  
-        <input type="text" name="why" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <label>Why We Like It</label><br>
+        <input id="whyField" type="text" name="why" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br>
         <br>
-        <label>Can't Miss</label><br>  
-        <input type="text" name="cant" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <label>Can't Miss</label><br>
+        <input id="cantField" type="text" name="cant" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br>
         <br>
-        <label>Good To Know</label><br>  
-        <input type="text" name="good" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br> 
+        <label>Good To Know</label><br>
+        <input id="goodField" type="text" name="good" size="50" maxlength="100" placeholder="(Max. 100 characters)"><br>
         <br>
         </div>
 
@@ -129,35 +147,35 @@
           <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
           <div class="row"><div class="column"><h6>Monday</h6></div><div class="column">d</div><div class="column">d</div><div class="column">d</div><div class="column">d</div></div>
         </div>
-        
+
         <h6>Monday</h6><input type="text" name="hoursOne" placeholder="Eg. Monday: Closed"><br>
         <input type="text" name="hoursTwo" placeholder="Eg. Tue-Fri: 8-16:00"><br>
         <input type="text" name="hoursThree" placeholder="Eg. Sat-Sun: 10-18:00"><br>
         <br>
         <label>Comment to hours</label><br>
-        <input type="text" name="hoursComment"  size="50" placeholder="E.g. Closed during winter (Max. 30 characters)"><br>
+        <input id="commentFIeld" type="text" name="hoursComment"  size="50" placeholder="E.g. Closed during winter (Max. 30 characters)"><br>
         <br>
         <label>Address</label><br>
-        <input type="text" name="street" placeholder="Street"><br>
-        <input type="text" name="postal" placeholder="Postal code"><br>
-        <input type="text" name="city" placeholder="City"><br>
+        <input id="streetField" type="text" name="street" placeholder="Street"><br>
+        <input id="postalField" type="text" name="postal" placeholder="Postal code"><br>
+        <input id="cityField" type="text" name="city" placeholder="City"><br>
         <br>
-        <label>Main Image Name</label><br> 
-        <input type="text" name="img" placeholder="E.g. beach.jpg"><br>
+        <label>Main Image Name</label><br>
+        <input id="imageField" type="text" name="img" placeholder="E.g. beach.jpg"><br>
         <br>
         <label>Website URL (Optional)</label><br>
-        <input type="text" name="web" placeholder="E.g. www.example.com"><br>
+        <input id="urlField" type="text" name="web" placeholder="E.g. www.example.com"><br>
         <br>
         <h3>Step 4: Save</h3>
-        <input type="submit" value="Save" name="submit">
+        <input id="submitButton" type="submit" value="Submit" name="submit">
       </form>
-  
-  
-  
+
+
+
       <h2>Upload image</h2>
       <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
         <h3>Step 1: Choose an image</h3>
-        <label>Select Image</label><br> 
+        <label>Select Image</label><br>
         <input type="file" name="fileToUpload" id="fileToUpload"><br>
         <br>
         <h3>Step 2: Upload</h3>
