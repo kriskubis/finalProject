@@ -22,21 +22,38 @@ h2 {
   font-size: 68px;
 }
 
-h3, h4 {
+h3 {
   font-family: "Josefine Sans", sans-serif;
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 28px;
 }
 
-h5 {
+h4 {
   font-family: "Josefine Sans", sans-serif;
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 22px;
 }
 
-h6, label {
+h5, label {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 22px;
+}
+
+h6 {
+  font-family: "Josefine Sans", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 8px 0;
+}
+
+label {
+  font-family: "Josefine Sans", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 500;
   margin: 0 0 8px 0;
 }
@@ -118,25 +135,49 @@ main {
 }
 
 .admin-section {
-  padding: 40px;
+  width: 100%;
 }
-.admin-section h2 {
-  text-align: center;
+.admin-section p {
+  font-size: 18px;
 }
-.admin-section .half-column {
-  width: 50%;
+.admin-section fieldset {
+  width: 70%;
+  margin: auto;
+}
+.admin-section fieldset .column {
+  width: 40%;
   float: left;
+  padding: 5%;
 }
 
-#hours .row {
-  width: 100%;
-  border: 2px solid red;
+.save {
+  text-align: center;
 }
-#hours .column {
-  width: 20%;
-  height: 20px;
+
+.hoursRow {
+  width: 100%;
+}
+.hoursRow .hoursColumn {
   float: left;
-  border: 2px solid blue;
+}
+.hoursRow .hoursColumn:nth-of-type(1) {
+  width: 120px;
+  margin-right: 5px;
+}
+.hoursRow .hoursColumn:nth-of-type(2) {
+  width: 35px;
+  margin-right: 5px;
+}
+.hoursRow .hoursColumn:nth-of-type(3) {
+  width: 30px;
+  margin-right: 15px;
+}
+.hoursRow .hoursColumn:nth-of-type(4) {
+  width: 8px;
+  margin-right: 15px;
+}
+.hoursRow .hoursColumn:nth-of-type(5) {
+  width: 30px;
 }
 
 .map {

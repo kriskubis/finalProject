@@ -1,144 +1,137 @@
-//----------------------- SINGLE-PAGE FUNCTIONALITY -----------------------//
-// Change active button (the colour green) with jQuery
-$(function() {
+ //----------------------- FIREBASE -----------------------//
+// Your web app's Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyBaXpDbJvr5P4cyveLlC5SODF_b57LQmcc",
+    authDomain: "finalproject-c1daa.firebaseapp.com",
+    databaseURL: "https://finalproject-c1daa.firebaseio.com",
+    projectId: "finalproject-c1daa",
+    storageBucket: "finalproject-c1daa.appspot.com",
+    messagingSenderId: "804528166915",
+    appId: "1:804528166915:web:127d130559acd85c005636"
+  };
+  
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  const db = firebase.firestore();
+  const activities = db.collection("activities");
+  
+  //----------------------- SINGLE-PAGE FUNCTIONALITY -----------------------//
+  // Change active button (the colour green) with jQuery
+  $(function() {
     $(".btn").click(function() {
         $(".btn").removeClass("btn-active");
-        $(this).addClass("btn-active");
+        $(this).addClass("btn-active");  
     });
-});
-
-// Hide and show sections
-$(function() {
+  });
+  
+  // Hide and show sections
+  $(function() {
     $("#addBtn").click(function() {
         $("#admin-title").text("Adding new activity");
-        $("#edit-section").addClass("hidden");
-        $("#add-section").removeClass("hidden");
+        $("#edit").addClass("hidden");
+        $("#imgUpload").addClass("hidden");
+        $("#add").removeClass("hidden");
     });
-});
-
-$(function() {
+  });
+  
+  $(function() {
     $("#editBtn").click(function() {
         $("#admin-title").text("Editing existing activity");
-        $("#add-section").addClass("hidden");
-        $("#edit-section").removeClass("hidden");
+        $("#add").addClass("hidden");
+        $("#imgUpload").addClass("hidden");
+        $("#edit").removeClass("hidden");
     });
-});
-
-
-
-
-//----------------------- EDIT EXISTING ACTIVITY -----------------------//
-// Create json request "req"
-let req = new Request('json/activities.json');
-
-// Add existing activities to step 1
-fetch(req)
-.then(function(response) {
-  return response.json();
-  })
-
-  .then(json => {
-    appendOptions(json.activities);
   });
-
-  function appendOptions(activities) {
-  for (let activity of activities) {
-    activityOptions.innerHTML += `
-    <input type="radio" name="actTitle" value="${activity.title}" onClick="getActValue()"> ${activity.title} <br>
-      `;
-  }
-}
-
-// Get value of the chosen activity in step 1 (var must be global)
-var chosenActivity = {};
-function getActValue() {
-    chosenActivity.value = event.target.value;
-}
-
-// Get value of the chosen field in step 2 (var must be global)
-var chosenField = {};
-function getFieldValue() {
-    chosenField.value = event.target.value;
-}
-
-// Show available options or...
-function priceOptions() {
-    document.getElementById("infoField").innerHTML = '<input type="radio" name="newInfo" value="$"> $ <br><input type="radio" name="newInfo" value="$$"> $$ <br><input type="radio" name="newInfo" value="$$$"> $$$ <br>';
-}
-function catOptions() {
-    document.getElementById("infoField").innerHTML = '<input type="radio" name="cat" value="dining"> Dining Out <br><input type="radio" name="cat" value="city"> Exploring the City <br><input type="radio" name="cat" value="outdoor"> Relaxed Outdoor Activities <br><input type="radio" name="cat" value="amusement"> Amusement <br><input type="radio" name="cat" value="learning"> Learning <br><input type="radio" name="cat" value="active"> Active <br>';
-}
-function indoorOptions() {
-    document.getElementById("infoField").innerHTML = '<input type="radio" name="indoors" value="true"> Indoor <br><input type="radio" name="indoors" value="false"> Outdoor <br>';
-}
-
-// ...show current content in step 3
-function getContent() {
-
-    fetch(req)
-    .then(function(response) {
-        return response.json();
-    })
-
-    .then(json => {
-        appendOptions(json.activities);
+  
+  $(function() {
+    $("#imgBtn").click(function() {
+        $("#admin-title").text("Uploading new image");
+        $("#add").addClass("hidden");
+        $("#edit").addClass("hidden");
+        $("#imgUpload").removeClass("hidden");
     });
-
-    // SHOULD FILTER ACCORDING TO chosenActivity AND chosenField
-    console.log('Showing the content of "' + chosenField.value + '" for ' + chosenActivity.value);
-
-    function appendOptions(activities) {
-        for (let activity of activities) {
-
-            //if (title.includes(chosenActivity)) {
-            //   console.log(activity.identifier)
-            //}
-
-            infoField.innerHTML = `
-            <h4>Current text:</h4>
-            <p><i>${activity.intro}</i></p><br>
-            <h4>New text:</h4>
-            <input type="text" name="newContent" size="50" maxlength="100" placeholder="(Write the new text here)"><br>
-            `;
-        }
-    }
-}
-
-//----------------------- PUSH DATA TO JSON -----------------------//
-// document.getElementById("submitButton").addEventListener("click", function(event){
-//   event.preventDefault()
-//   let data = {};
-//   let test = document.getElementById("test").value + document.getElementById("testD").value;
-// //  let test = document.getElementsByTagName("input").value;
-// console.log(test);
-// });
-
-
-
-
-  document.getElementById("submitButton").addEventListener("click", function(event){
-event.preventDefault()
-let obj = {
-  title: document.getElementById('titleField').value,
-  score: 0,
-  cat: document.getElementById('activityCategory').value,
-  dist: 0,
-  description: document.getElementById('descField').value,
-  price: document.getElementById('priceCategory').value,
-  space: document.getElementById('spaceField').value,
-  activity: document.getElementById('activityCategory').value,
-  idealFor: document.getElementById('idealField').value,
-  whyWeLikeIt: document.getElementById('whyField').value,
-  cantMiss: document.getElementById('cantField').value,
-  goodToKnow: document.getElementById('goodField').value,
-  hours: 0,
-  hourComment: document.getElementById('commentFIeld').value,
-  street: document.getElementById('streetField').value,
-  postalCode: document.getElementById('postalField').value,
-  city: document.getElementById('cityField').value,
-  imageName: document.getElementById('imageField').value,
-  websiteURL: document.getElementById('urlField').value,
-};
-var myJSON = JSON.stringify(obj);
-console.log(myJSON);
-})
+  });
+  
+  //----------------------- ADD NEW ACTIVITY -----------------------//
+  // Get values of radio options
+  var cat = "city"; // Trying to make these global
+  var price = "$"; // Trying to make these global
+  var indoors = true; // Trying to make these global
+  
+  jQuery(function(){
+    $("input[name='cat']").click(function(){
+        var cat = $("input[name='cat']:checked").val();
+        console.log(cat);
+    });
+  
+    $("input[name='price']").click(function(){
+        var price = $("input[name='price']:checked").val();
+        console.log(price);
+    });
+  
+    $("input[name='indoors']").click(function(){
+        var indoors = $("input[name='indoors']:checked").val();
+        console.log(indoors);
+    });
+  });
+  
+  function addNewActivity() {
+    // Fields
+    let title = document.querySelector('#title').value;
+    let dist = document.querySelector('#dist').value;;
+    let intro = document.querySelector('#intro').value;
+    let ideal = document.querySelector('#ideal').value;
+    let why = document.querySelector('#why').value;
+    let cant = document.querySelector('#cant').value;
+    let good = document.querySelector('#good').value;
+    let monO = document.querySelector('#monO').value;
+    let monC = document.querySelector('#monC').value;
+    let tueO = document.querySelector('#tueO').value;
+    let tueC = document.querySelector('#tueC').value;
+    let wenO = document.querySelector('#wenO').value;
+    let wenC = document.querySelector('#wenC').value;
+    let thuO = document.querySelector('#thuO').value;
+    let thuC = document.querySelector('#thuC').value;
+    let friO = document.querySelector('#friO').value;
+    let friC = document.querySelector('#friC').value;
+    let satO = document.querySelector('#satO').value;
+    let satC = document.querySelector('#satC').value;
+    let sunO = document.querySelector('#sunO').value;
+    let sunC = document.querySelector('#sunC').value;
+    let score = 0;
+    let img = "placeholder.jpg";
+  
+    let newActivity = {
+      title: title,
+      cat: cat,
+      price: price,
+      indoors: indoors,
+      dist: dist,
+      intro: intro,
+      ideal: ideal,
+      why: why,
+      cant: cant,
+      good: good,
+      monO: monO,
+      monC: monC,
+      tueO: tueO,
+      tueC: tueC,
+      wenO: wenO,
+      wenC: wenC,
+      thuO: thuO,
+      thuC: thuC,
+      friO: friO,
+      friC: friC,
+      satO: satO,
+      satC: satC,
+      sunO: sunO,
+      sunC: sunC,
+      score: score,
+      img: img
+    };
+  
+    console.log(newActivity);
+    activities.add(newActivity);
+  }
+  
