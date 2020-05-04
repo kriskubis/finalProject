@@ -25,8 +25,11 @@
   </header>
 
   <main>
+
+    <!---------------------- ADD NEW ACTIVITY SECTION ---------------------->
+
     <section id="add" class="admin-section">
-      <form>
+      <form id="add-form">
 
           <fieldset>
             <legend><h4>Main information</h4></legend>
@@ -133,16 +136,89 @@
         </form>
     </section>
 
-
+    <!---------------------- EDIT ACTIVITY SECTION ---------------------->
 
     <section id="edit" class="admin-section hidden">
-      Edit existing
-      <form action="js/update.js" method="post" enctype="multipart/form-data">
-        <input type="submit" value="Save" name="submit">
+      <form method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend><h4>Main information</h4></legend>
+          <div class="column">
+            <label for="title">Choose an activity to edit:</label><br>
+            <div id="edit-title"> <!-- --> </div>
+          </div>
+          <div class="column">
+            <label for="new-title">New title:</label><br>
+            <input id="new-title" type="text" name="new-title" value=""><br>
+            <br>
+            <label for="new-cat">New category:</label><br>
+            <input id="new-cat" type="text" name="new-cat" value=""><br>
+            <br>
+            <label for="new-price">New price class:</label><br>
+            <input id="new-price" type="text" name="new-price" value=""><br>
+            <br>
+            <label for="new-indoors">New indoors / outdoors:</label><br>
+            <input id="new-indoors" type="text" name="new-indoors" value=""><br>
+            <br>
+            <label for="new-dist">New distance from vacation house:</label><br>
+            <input id="new-dist" type="text" name="new-dist"  value=""> Km<br>
+        </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Activity description</h4></legend>
+          <div class="column">
+            <label for="new-intro">Introduction:</label><br>
+            <input id="new-intro" type="text" name="new-intro" value=""><br>
+            <br>
+            <label for="new-ideal">Ideal for:</label><br>
+            <input id="new-ideal" type="text" name="new-ideal" value=""><br>
+            <br>
+            <label for="new-why">Why we like it:</label><br>
+            <input id="new-why" type="text" name="new-why" value=""><br>
+          </div>
+          <div class="column">
+            <label for="new-cant">Can't miss:</label><br>
+            <input id="new-cant" type="text" name="new-cant" value=""><br>
+            <br>
+            <label for="new-good">Good to know:</label><br>
+            <input id="new-good" type="text" name="new-good" value=""><br>
+          </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Address</h4></legend>
+          <div>
+            <!-- Content goes here -->
+          </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Open hours</h4></legend>
+          <div>
+            <!-- Content goes here -->
+          </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Other</h4></legend>
+          <div>
+            <!-- Content goes here -->
+          </div>
+        </fieldset>
+        <br>
+
+        
+        <div  class="save">
+          <button  class="btn" type="button" name="button" onclick="editActivity()">Save</button>
+        </div>
       </form>
     </section>
 
-  
+    <!---------------------- UPLOAD IMAGE SECTION ---------------------->
   
     <section id="imgUpload" class="admin-section hidden">
       Upload image

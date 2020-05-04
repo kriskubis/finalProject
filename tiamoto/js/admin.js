@@ -14,7 +14,17 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   
   const db = firebase.firestore();
-  const activities = db.collection("activities");
+  const actRef = db.collection("activities");
+  const scoreRef = db.collection("score");
+  const titleRef = db.collection("title");
+  const introRef = db.collection("intro");
+  const imgRef = db.collection("img");
+  const distRef = db.collection("dist");
+  const catRef = db.collection("cat");
+  const idealRef = db.collection("ideal");
+  const whyRef = db.collection("why");
+  const cantRef = db.collection("cant");
+  const goodRef = db.collection("good");
   
   //----------------------- SINGLE-PAGE FUNCTIONALITY -----------------------//
   // Change active button (the colour green) with jQuery
@@ -79,7 +89,7 @@ var firebaseConfig = {
   function addNewActivity() {
     // Fields
     let title = document.querySelector('#title').value;
-    let dist = document.querySelector('#dist').value;;
+    let dist = document.querySelector('#dist').value;
     let intro = document.querySelector('#intro').value;
     let ideal = document.querySelector('#ideal').value;
     let why = document.querySelector('#why').value;
@@ -101,37 +111,102 @@ var firebaseConfig = {
     let sunC = document.querySelector('#sunC').value;
     let score = 0;
     let img = "placeholder.jpg";
+
+    // Fail message
+    if (title == "") {
+      alert('Oops, something is missing. Please fill in the field named "Activity Title".');
+    } else {
+      let newActivity = {
+        title: title,
+        cat: cat,
+        price: price,
+        indoors: indoors,
+        dist: dist,
+        intro: intro,
+        ideal: ideal,
+        why: why,
+        cant: cant,
+        good: good,
+        monO: monO,
+        monC: monC,
+        tueO: tueO,
+        tueC: tueC,
+        wenO: wenO,
+        wenC: wenC,
+        thuO: thuO,
+        thuC: thuC,
+        friO: friO,
+        friC: friC,
+        satO: satO,
+        satC: satC,
+        sunO: sunO,
+        sunC: sunC,
+        score: score,
+        img: img
+      };
+    
+      console.log(newActivity);
+      actRef.add(newActivity);
   
-    let newActivity = {
-      title: title,
-      cat: cat,
-      price: price,
-      indoors: indoors,
-      dist: dist,
-      intro: intro,
-      ideal: ideal,
-      why: why,
-      cant: cant,
-      good: good,
-      monO: monO,
-      monC: monC,
-      tueO: tueO,
-      tueC: tueC,
-      wenO: wenO,
-      wenC: wenC,
-      thuO: thuO,
-      thuC: thuC,
-      friO: friO,
-      friC: friC,
-      satO: satO,
-      satC: satC,
-      sunO: sunO,
-      sunC: sunC,
-      score: score,
-      img: img
-    };
-  
-    console.log(newActivity);
-    activities.add(newActivity);
+      alert("Success! " + title + " was added to the guide.");
+      document.getElementById("add-form").reset(); // Reset the form
+    }
   }
   
+  //----------------------- EDIT ACTIVITY -----------------------//
+  actRef.onSnapshot(function(snapshotData) {
+    let acts = snapshotData.docs;
+    appendTitles(acts);
+  });
+  
+  // Append option the user can choose from
+  function appendTitles(acts) {
+    let htmlTemplate = "";
+    for (let act of acts) {
+      console.log(act.id);
+      htmlTemplate += `
+      <option class="title-option" value="${act.data().title}">     
+      `;
+    }
+    document.querySelector('#title-options').innerHTML = htmlTemplate;
+  }
+
+  // Get the title of the selected activity
+  $("input[name='title-options']").on('input', function(e){
+    var selectedActivity = $(this).val();
+    console.log(selectedActivity);
+    fields();
+  });
+
+  // ----------------------- ADD ACTIVITIES TO DOM -----------------------//
+  actRef.onSnapshot(function(snapshotData) {
+    let acts = snapshotData.docs;
+    appendFields(acts);
+  });
+
+  // Edit fields based on chosen activity
+  function appendFields(acts) {
+    let htmlTemplate = "";
+    for (let act of acts) {
+      console.log(act.id);
+      htmlTemplate += `
+      <article class="option" onClick="
+      document.getElementById('new-title').value = '${act.data().title}';
+      document.getElementById('new-cat').value = '${act.data().cat}';
+      document.getElementById('new-price').value = '${act.data().price}';
+      document.getElementById('new-indoors').value = '${act.data().indoors}';
+      document.getElementById('new-dist').value = '${act.data().dist}';
+
+      document.getElementById('new-intro').value = '${act.data().intro}';
+      document.getElementById('new-ideal').value = '${act.data().ideal}';
+      document.getElementById('new-why').value = '${act.data().why}';
+      document.getElementById('new-cant').value = '${act.data().cant}';
+      document.getElementById('new-good').value = '${act.data().good}';
+      
+      ">
+      ${act.data().title}
+      </article>        
+    `;
+    }
+    document.querySelector('#edit-title').innerHTML = htmlTemplate;
+  }
