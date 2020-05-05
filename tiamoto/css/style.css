@@ -2,11 +2,7 @@ html {
   margin: 0;
   padding: 0;
   color: #555555;
-}
-
-p {
-  font-size: 24px;
-  margin: 0 0 8px 0;
+  font-family: "Spartan", sans-serif;
 }
 
 h1 {
@@ -47,6 +43,11 @@ h6 {
   font-family: "Josefine Sans", sans-serif;
   font-size: 18px;
   line-height: 24px;
+  margin: 0 0 8px 0;
+}
+
+p {
+  font-size: 14px;
   margin: 0 0 8px 0;
 }
 
@@ -137,9 +138,6 @@ main {
 .admin-section {
   width: 100%;
 }
-.admin-section p {
-  font-size: 18px;
-}
 .admin-section fieldset {
   width: 70%;
   margin: auto;
@@ -178,6 +176,50 @@ main {
 }
 .hoursRow .hoursColumn:nth-of-type(5) {
   width: 30px;
+}
+
+#id {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.delete-btn {
+  padding: 10px 4px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #bcbcbc;
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.delete-btn:hover {
+  background-color: darkred;
+}
+.delete-btn p {
+  line-height: 14px;
+  font-family: "Spartan", sans-serif;
+  margin: 0;
+}
+
+#edit-activity {
+  height: 300px;
+  width: 100%;
+  border: 2px solid #cccccc;
+  overflow-y: scroll;
+}
+#edit-activity article {
+  height: 30px;
+  background-color: #f0f0f0;
+  border: 2px solid #ffffff;
+}
+#edit-activity article :hover {
+  background-color: #cbdcf0;
+}
+#edit-activity article h6 {
+  line-height: 26px;
+  font-size: 16px;
+  font-family: "Lora", serif;
+  padding: 2px 8px;
 }
 
 .map {

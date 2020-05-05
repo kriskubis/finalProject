@@ -67,7 +67,7 @@ var firebaseConfig = {
   // Get values of radio options
   var cat = "city"; // Trying to make these global
   var price = "$"; // Trying to make these global
-  var indoors = true; // Trying to make these global
+  var indoors = "indoors"; // Trying to make these global
   
   jQuery(function(){
     $("input[name='cat']").click(function(){
@@ -109,6 +109,7 @@ var firebaseConfig = {
     let satC = document.querySelector('#satC').value;
     let sunO = document.querySelector('#sunO').value;
     let sunC = document.querySelector('#sunC').value;
+    let comment = document.querySelector('#comment').value;
     let score = 0;
     let img = "placeholder.jpg";
 
@@ -141,12 +142,14 @@ var firebaseConfig = {
         satC: satC,
         sunO: sunO,
         sunC: sunC,
+        comment: comment,
         score: score,
         img: img
       };
     
       console.log(newActivity);
-      actRef.add(newActivity);
+      // Create new document with the title as ID
+      actRef.doc(title).set(newActivity);
   
       alert("Success! " + title + " was added to the guide.");
       document.getElementById("add-form").reset(); // Reset the form
@@ -156,31 +159,6 @@ var firebaseConfig = {
   //----------------------- EDIT ACTIVITY -----------------------//
   actRef.onSnapshot(function(snapshotData) {
     let acts = snapshotData.docs;
-    appendTitles(acts);
-  });
-  
-  // Append option the user can choose from
-  function appendTitles(acts) {
-    let htmlTemplate = "";
-    for (let act of acts) {
-      console.log(act.id);
-      htmlTemplate += `
-      <option class="title-option" value="${act.data().title}">     
-      `;
-    }
-    document.querySelector('#title-options').innerHTML = htmlTemplate;
-  }
-
-  // Get the title of the selected activity
-  $("input[name='title-options']").on('input', function(e){
-    var selectedActivity = $(this).val();
-    console.log(selectedActivity);
-    fields();
-  });
-
-  // ----------------------- ADD ACTIVITIES TO DOM -----------------------//
-  actRef.onSnapshot(function(snapshotData) {
-    let acts = snapshotData.docs;
     appendFields(acts);
   });
 
@@ -188,9 +166,11 @@ var firebaseConfig = {
   function appendFields(acts) {
     let htmlTemplate = "";
     for (let act of acts) {
-      console.log(act.id);
       htmlTemplate += `
       <article class="option" onClick="
+      document.getElementById('id').value = '${act.data().title}';
+      document.getElementById('delete-text').innerHTML = 'Delete ${act.data().title}';
+
       document.getElementById('new-title').value = '${act.data().title}';
       document.getElementById('new-cat').value = '${act.data().cat}';
       document.getElementById('new-price').value = '${act.data().price}';
@@ -202,11 +182,125 @@ var firebaseConfig = {
       document.getElementById('new-why').value = '${act.data().why}';
       document.getElementById('new-cant').value = '${act.data().cant}';
       document.getElementById('new-good').value = '${act.data().good}';
+
+      document.getElementById('new-street').value = '${act.data().street}';
+      document.getElementById('new-postal').value = '${act.data().postal}';
+      document.getElementById('new-city').value = '${act.data().city}';
+
+      document.getElementById('new-monO').value = '${act.data().monO}';
+      document.getElementById('new-tueO').value = '${act.data().tueO}';
+      document.getElementById('new-wenO').value = '${act.data().wenO}';
+      document.getElementById('new-thuO').value = '${act.data().thuO}';
+      document.getElementById('new-friO').value = '${act.data().friO}';
+      document.getElementById('new-satO').value = '${act.data().satO}';
+      document.getElementById('new-sunO').value = '${act.data().sunO}';
+      document.getElementById('new-monC').value = '${act.data().monC}';
+      document.getElementById('new-tueC').value = '${act.data().tueC}';
+      document.getElementById('new-wenC').value = '${act.data().wenC}';
+      document.getElementById('new-thuC').value = '${act.data().thuC}';
+      document.getElementById('new-friC').value = '${act.data().friC}';
+      document.getElementById('new-satC').value = '${act.data().satC}';
+      document.getElementById('new-sunC').value = '${act.data().sunC}';
+      document.getElementById('new-comment').value = '${act.data().comment}';
+
+      document.getElementById('new-img').value = '${act.data().img}';
+      document.getElementById('new-web').value = '${act.data().web}';
       
       ">
-      ${act.data().title}
+      <h6>${act.data().title}</h6>
       </article>        
     `;
     }
-    document.querySelector('#edit-title').innerHTML = htmlTemplate;
+    document.querySelector('#edit-activity').innerHTML = htmlTemplate;
+  }
+
+  // Update functionality
+  function editActivity() {
+    // Fields
+    let title = document.querySelector('#id').value;
+    let newTitle = document.querySelector('#new-title').value;
+    let newCat = document.querySelector('#new-cat').value;
+    let newPrice = document.querySelector('#new-price').value;
+    let newIndoors = document.querySelector('#new-indoors').value;
+    let newDist = document.querySelector('#new-dist').value;
+    let newIntro = document.querySelector('#new-intro').value;
+    let newIdeal = document.querySelector('#new-ideal').value;
+    let newWhy = document.querySelector('#new-why').value;
+    let newCant = document.querySelector('#new-cant').value;
+    let newGood = document.querySelector('#new-good').value;
+    let newMonO = document.querySelector('#new-monO').value;
+    let newMonC = document.querySelector('#new-monC').value;
+    let newTueO = document.querySelector('#new-tueO').value;
+    let newTueC = document.querySelector('#new-tueC').value;
+    let newWenO = document.querySelector('#new-wenO').value;
+    let newWenC = document.querySelector('#new-wenC').value;
+    let newThuO = document.querySelector('#new-thuO').value;
+    let newThuC = document.querySelector('#new-thuC').value;
+    let newFriO = document.querySelector('#new-friO').value;
+    let newFriC = document.querySelector('#new-friC').value;
+    let newSatO = document.querySelector('#new-satO').value;
+    let newSatC = document.querySelector('#new-satC').value;
+    let newSunO = document.querySelector('#new-sunO').value;
+    let newSunC = document.querySelector('#new-sunC').value;
+    let newComment = document.querySelector('#new-comment').value;
+    let newScore = 0;
+    let newImg = "placeholder.jpg";
+
+    // Fail message
+    if (newTitle == "") {
+      alert('Please fill in the field named "New title".');
+    } else {
+      let updatedActivity = {
+        oldTitle: title,
+        title: newTitle,
+        cat: newCat,
+        price: newPrice,
+        indoors: newIndoors,
+        dist: newDist,
+        intro: newIntro,
+        ideal: newIdeal,
+        why: newWhy,
+        cant: newCant,
+        good: newGood,
+        monO: newMonO,
+        monC: newMonC,
+        tueO: newTueO,
+        tueC: newTueC,
+        wenO: newWenO,
+        wenC: newWenC,
+        thuO: newThuO,
+        thuC: newThuC,
+        friO: newFriO,
+        friC: newFriC,
+        satO: newSatO,
+        satC: newSatC,
+        sunO: newSunO,
+        sunC: newSunC,
+        comment: newComment,
+        score: newScore,
+        img: newImg
+      };
+    
+      // Delete old document by ID (title)
+      // and create new document with the new title as ID
+      actRef.doc(title).delete().then(function() {
+        actRef.doc(newTitle).set(updatedActivity);
+        alert("Success! " + title + " was updated.");
+      }).catch(function(error) {
+        alert("Oops! Something went wrong.");
+        console.error("Error updating document: ", error);
+      });
+    }
+  }
+
+  //----------------------- DELETE ACTIVITY -----------------------//
+  function deleteActivity() {
+    let id = document.querySelector('#id').value;
+
+    actRef.doc(id).delete().then(function() {
+      alert("Success! " + id + " was deleted.");
+  }).catch(function(error) {
+      alert("Oops! Something went wrong.");
+      console.error("Error removing document: ", error);
+  });
   }
