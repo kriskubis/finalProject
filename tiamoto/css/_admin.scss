@@ -26,28 +26,100 @@
 }
 
 .admin-section {
-    padding: 40px;
+    width: 100%;
     
-    h2 {
-        text-align: center;
-    }
+    fieldset {
+        width: 70%;
+        margin: auto;
 
-    .half-column {
-        width: 50%;
-        float: left;
+        .column {
+            width: 40%;
+            float: left;
+            padding: 5%;
+        }
     }
 }
 
-#hours {
-    .row {
-        width: 100%;
-        border: 2px solid red;
+.save {
+    text-align: center;
+}
+
+.hoursRow {
+    width: 100%;
+
+    .hoursColumn {
+        float: left;
+
+        &:nth-of-type(1) {
+            width: 120px;
+            margin-right: 5px;
+        }
+
+        &:nth-of-type(2) {
+            width: 35px;
+            margin-right: 5px;
+        }
+
+        &:nth-of-type(3) {
+            width: 30px;
+            margin-right: 15px;
+        }
+
+        &:nth-of-type(4) {
+            width: 8px;
+            margin-right: 15px;
+        }
+
+        &:nth-of-type(5) {
+            width: 30px;
+        }
+    }
+}
+
+#id {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.delete-btn {
+    padding: 10px 4px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $grey;
+
+    &:hover {
+        background-color: darkred;
     }
     
-    .column {
-        width: 20%;
-        height: 20px;
-        float: left;
-        border: 2px solid blue;
+    p {
+        line-height: 14px;
+        font-family: $font-body;
+        margin: 0;
+    }
+
+    @include shadow-slim
+}
+
+#edit-activity {
+    height: 300px;
+    width: 100%;
+    border: 2px solid $light-grey;
+    overflow-y: scroll;
+
+    article {
+        height: 30px;
+        background-color: #f0f0f0;
+        border: 2px solid $white;
+
+        :hover {
+          background-color: $sky;  
+        }
+
+        h6 {
+            line-height: 26px;
+            font-size: 16px;
+            font-family: $font-title;
+            padding: 2px 8px;
+        }
     }
 }

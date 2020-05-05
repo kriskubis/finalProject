@@ -29,6 +29,7 @@
     }
 }
 
+
 #expand-map {
     text-align: center;
     button {
@@ -54,9 +55,14 @@
     -o-transform: rotate(45deg);
 }
 
+p {
+    font-size: 22px;
+    line-height: 26px;
+}
+
 #first-column {
     div {
-        width: 50%;
+        width: 45%;
         float: left;
 
         &:nth-of-type(2) {
@@ -103,6 +109,7 @@
         background-color: $active;
     }
 }
+
 
 // Card styling
 #activityGrid {
@@ -160,6 +167,9 @@
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
+        font-size: 22px;
+        line-height: 28px;
+        margin-top: 12px;
     }
 }
 
@@ -171,6 +181,12 @@
     top: -235px;
     left: 250px;
     @include shadow-slim
+}
+
+.second-column {
+    p {
+        margin: 5px 5px 10.5px 5px;
+    }
 }
 
 // Match category with background colour

@@ -21,11 +21,7 @@ html {
     margin: 0;
     padding: 0;
     color: $dark-grey;
-}
-
-p {
-    font-size: 24px;
-    margin: 0 0 8px 0;
+    font-family: $font-body;
 }
 
 h1 {
@@ -41,21 +37,43 @@ h2 {
     font-size: 68px;
 }
 
-h3, h4 {
+h3 {
     font-family: $font-headline;
     font-weight: 700;
     margin: 0 0 8px 0;
     font-size: 28px;
 }
 
-h5 {
+h4 {
     font-family: $font-headline;
     font-weight: 700;
     margin: 0 0 8px 0;
     font-size: 22px;
 }
 
-h6, label {
+h5, label {
+    font-family: $font-headline;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    font-size: 22px;
+}
+
+h6 {
+    font-family: $font-headline;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0 0 8px 0;
+}
+
+p {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+}
+
+label {
+    font-family: $font-headline;
+    font-size: 18px;
+    line-height: 24px;
     font-weight: 500;
     margin: 0 0 8px 0;
 }

@@ -2,11 +2,7 @@ html {
   margin: 0;
   padding: 0;
   color: #555555;
-}
-
-p {
-  font-size: 24px;
-  margin: 0 0 8px 0;
+  font-family: "Spartan", sans-serif;
 }
 
 h1 {
@@ -22,21 +18,43 @@ h2 {
   font-size: 68px;
 }
 
-h3, h4 {
+h3 {
   font-family: "Josefine Sans", sans-serif;
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 28px;
 }
 
-h5 {
+h4 {
   font-family: "Josefine Sans", sans-serif;
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 22px;
 }
 
-h6, label {
+h5, label {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 22px;
+}
+
+h6 {
+  font-family: "Josefine Sans", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 8px 0;
+}
+
+p {
+  font-size: 14px;
+  margin: 0 0 8px 0;
+}
+
+label {
+  font-family: "Josefine Sans", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 500;
   margin: 0 0 8px 0;
 }
@@ -118,25 +136,90 @@ main {
 }
 
 .admin-section {
-  padding: 40px;
+  width: 100%;
 }
-.admin-section h2 {
-  text-align: center;
+.admin-section fieldset {
+  width: 70%;
+  margin: auto;
 }
-.admin-section .half-column {
-  width: 50%;
+.admin-section fieldset .column {
+  width: 40%;
   float: left;
+  padding: 5%;
 }
 
-#hours .row {
-  width: 100%;
-  border: 2px solid red;
+.save {
+  text-align: center;
 }
-#hours .column {
-  width: 20%;
-  height: 20px;
+
+.hoursRow {
+  width: 100%;
+}
+.hoursRow .hoursColumn {
   float: left;
-  border: 2px solid blue;
+}
+.hoursRow .hoursColumn:nth-of-type(1) {
+  width: 120px;
+  margin-right: 5px;
+}
+.hoursRow .hoursColumn:nth-of-type(2) {
+  width: 35px;
+  margin-right: 5px;
+}
+.hoursRow .hoursColumn:nth-of-type(3) {
+  width: 30px;
+  margin-right: 15px;
+}
+.hoursRow .hoursColumn:nth-of-type(4) {
+  width: 8px;
+  margin-right: 15px;
+}
+.hoursRow .hoursColumn:nth-of-type(5) {
+  width: 30px;
+}
+
+#id {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.delete-btn {
+  padding: 10px 4px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #bcbcbc;
+  -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.delete-btn:hover {
+  background-color: darkred;
+}
+.delete-btn p {
+  line-height: 14px;
+  font-family: "Spartan", sans-serif;
+  margin: 0;
+}
+
+#edit-activity {
+  height: 300px;
+  width: 100%;
+  border: 2px solid #cccccc;
+  overflow-y: scroll;
+}
+#edit-activity article {
+  height: 30px;
+  background-color: #f0f0f0;
+  border: 2px solid #ffffff;
+}
+#edit-activity article :hover {
+  background-color: #cbdcf0;
+}
+#edit-activity article h6 {
+  line-height: 26px;
+  font-size: 16px;
+  font-family: "Lora", serif;
+  padding: 2px 8px;
 }
 
 .map {
@@ -185,8 +268,13 @@ main {
   -o-transform: rotate(45deg);
 }
 
+p {
+  font-size: 22px;
+  line-height: 26px;
+}
+
 #first-column div {
-  width: 50%;
+  width: 45%;
   float: left;
 }
 #first-column div:nth-of-type(2) {
@@ -286,6 +374,9 @@ main {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+  font-size: 22px;
+  line-height: 28px;
+  margin-top: 12px;
 }
 
 .card-btn {
@@ -298,6 +389,10 @@ main {
   -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.second-column p {
+  margin: 5px 5px 10.5px 5px;
 }
 
 .dining-bg {

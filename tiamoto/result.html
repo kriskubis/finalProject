@@ -9,7 +9,6 @@
   <title>Recommendations | Tiamoto</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Lora:wght@600&family=Spartan&display=swap" rel="stylesheet">
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
   
@@ -36,7 +35,9 @@
               Don’t like what you see? You can start over and choose new categories.</p>
             </section>
           <br><br>
-          <button id="return" class="btn-slim" onClick="returnBtn()"><h4>Try again</h4></button>
+          <div id="return-div">
+            <button id="return" class="btn-slim" onClick="returnBtn()"><h4>Try again</h4></button>
+          </div>
         </div>
         <div class="second-column" id="second-column" style="text-align: right; padding-top: 120px;">
           <div style="float: right; width: 10%;">
@@ -62,6 +63,8 @@
   </main>
 
   <!-- main js file -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
   <script src="js/main.js"></script>
   <script src="js/result.js"></script>
 </body>

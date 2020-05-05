@@ -14,7 +14,17 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   const db = firebase.firestore();
-  const activities = db.collection("activities");
+  const actRef = db.collection("activities");
+  const scoreRef = db.collection("score");
+  const titleRef = db.collection("title");
+  const introRef = db.collection("intro");
+  const imgRef = db.collection("img");
+  const distRef = db.collection("dist");
+  const catRef = db.collection("cat");
+  const idealRef = db.collection("ideal");
+  const whyRef = db.collection("why");
+  const cantRef = db.collection("cant");
+  const goodRef = db.collection("good");
 
   //----------------------- SINGLE-PAGE FUNCTIONALITY -----------------------//
   // Change active button (the colour green) with jQuery
@@ -44,23 +54,10 @@ var firebaseConfig = {
     });
   });
 
-  $(function() {
-    $("#imgBtn").click(function() {
-        $("#admin-title").text("Uploading new image");
-        $("#add").addClass("hidden");
-        $("#edit").addClass("hidden");
-        $("#imgUpload").removeClass("hidden");
-    });
-  });
-
-  //----------------------- ADD NEW ACTIVITY -----------------------//
-  $("#pushData").click(function(){
+  function addNewActivity() {
     // Fields
     let title = document.querySelector('#title').value;
-    let cat = document.querySelector('input[name="cat"]:checked').value;
-    let price = document.querySelector('input[name="price"]:checked').value;
-    let indoors = document.querySelector('input[name="indoors"]:checked').value;
-    let dist = document.querySelector('#dist').value;;
+    let dist = document.querySelector('#dist').value;
     let intro = document.querySelector('#intro').value;
     let ideal = document.querySelector('#ideal').value;
     let why = document.querySelector('#why').value;
@@ -80,37 +77,198 @@ var firebaseConfig = {
     let satC = document.querySelector('#satC').value;
     let sunO = document.querySelector('#sunO').value;
     let sunC = document.querySelector('#sunC').value;
+    let comment = document.querySelector('#comment').value;
     let score = 0;
     let img = "placeholder.jpg";
 
-    let newActivity = {
-      title: title,
-      cat: cat,
-      price: price,
-      indoors: indoors,
-      dist: dist,
-      intro: intro,
-      ideal: ideal,
-      why: why,
-      cant: cant,
-      good: good,
-      monO: monO,
-      monC: monC,
-      tueO: tueO,
-      tueC: tueC,
-      wenO: wenO,
-      wenC: wenC,
-      thuO: thuO,
-      thuC: thuC,
-      friO: friO,
-      friC: friC,
-      satO: satO,
-      satC: satC,
-      sunO: sunO,
-      sunC: sunC,
-      score: score,
-      img: img
-    };
-    console.log(newActivity);
-    activities.add(newActivity);
-});
+    // Fail message
+    if (title == "") {
+      alert('Oops, something is missing. Please fill in the field named "Activity Title".');
+    } else {
+      let newActivity = {
+        title: title,
+        cat = document.querySelector('input[name="cat"]:checked').value,
+        price = document.querySelector('input[name="price"]:checked').value,
+        ndoors = document.querySelector('input[name="indoors"]:checked').value,
+        dist: dist,
+        intro: intro,
+        ideal: ideal,
+        why: why,
+        cant: cant,
+        good: good,
+        monO: monO,
+        monC: monC,
+        tueO: tueO,
+        tueC: tueC,
+        wenO: wenO,
+        wenC: wenC,
+        thuO: thuO,
+        thuC: thuC,
+        friO: friO,
+        friC: friC,
+        satO: satO,
+        satC: satC,
+        sunO: sunO,
+        sunC: sunC,
+        comment: comment,
+        score: score,
+        img: img
+      };
+
+      console.log(newActivity);
+      // Create new document with the title as ID
+      actRef.doc(title).set(newActivity);
+
+      alert("Success! " + title + " was added to the guide.");
+      document.getElementById("add-form").reset(); // Reset the form
+    }
+  }
+
+  //----------------------- EDIT ACTIVITY -----------------------//
+  actRef.onSnapshot(function(snapshotData) {
+    let acts = snapshotData.docs;
+    appendFields(acts);
+  });
+
+  // Edit fields based on chosen activity
+  function appendFields(acts) {
+    let htmlTemplate = "";
+    for (let act of acts) {
+      htmlTemplate += `
+      <article class="option" onClick="
+      document.getElementById('id').value = '${act.data().title}';
+      document.getElementById('delete-text').innerHTML = 'Delete ${act.data().title}';
+
+      document.getElementById('new-title').value = '${act.data().title}';
+      document.getElementById('new-cat').value = '${act.data().cat}';
+      document.getElementById('new-price').value = '${act.data().price}';
+      document.getElementById('new-indoors').value = '${act.data().indoors}';
+      document.getElementById('new-dist').value = '${act.data().dist}';
+
+      document.getElementById('new-intro').value = '${act.data().intro}';
+      document.getElementById('new-ideal').value = '${act.data().ideal}';
+      document.getElementById('new-why').value = '${act.data().why}';
+      document.getElementById('new-cant').value = '${act.data().cant}';
+      document.getElementById('new-good').value = '${act.data().good}';
+
+      document.getElementById('new-street').value = '${act.data().street}';
+      document.getElementById('new-postal').value = '${act.data().postal}';
+      document.getElementById('new-city').value = '${act.data().city}';
+
+      document.getElementById('new-monO').value = '${act.data().monO}';
+      document.getElementById('new-tueO').value = '${act.data().tueO}';
+      document.getElementById('new-wenO').value = '${act.data().wenO}';
+      document.getElementById('new-thuO').value = '${act.data().thuO}';
+      document.getElementById('new-friO').value = '${act.data().friO}';
+      document.getElementById('new-satO').value = '${act.data().satO}';
+      document.getElementById('new-sunO').value = '${act.data().sunO}';
+      document.getElementById('new-monC').value = '${act.data().monC}';
+      document.getElementById('new-tueC').value = '${act.data().tueC}';
+      document.getElementById('new-wenC').value = '${act.data().wenC}';
+      document.getElementById('new-thuC').value = '${act.data().thuC}';
+      document.getElementById('new-friC').value = '${act.data().friC}';
+      document.getElementById('new-satC').value = '${act.data().satC}';
+      document.getElementById('new-sunC').value = '${act.data().sunC}';
+      document.getElementById('new-comment').value = '${act.data().comment}';
+
+      document.getElementById('new-img').value = '${act.data().img}';
+      document.getElementById('new-web').value = '${act.data().web}';
+
+      ">
+      <h6>${act.data().title}</h6>
+      </article>
+    `;
+    }
+    document.querySelector('#edit-activity').innerHTML = htmlTemplate;
+  }
+
+  // Update functionality
+  function editActivity() {
+    // Fields
+    let title = document.querySelector('#id').value;
+    let newTitle = document.querySelector('#new-title').value;
+    let newCat = document.querySelector('#new-cat').value;
+    let newPrice = document.querySelector('#new-price').value;
+    let newIndoors = document.querySelector('#new-indoors').value;
+    let newDist = document.querySelector('#new-dist').value;
+    let newIntro = document.querySelector('#new-intro').value;
+    let newIdeal = document.querySelector('#new-ideal').value;
+    let newWhy = document.querySelector('#new-why').value;
+    let newCant = document.querySelector('#new-cant').value;
+    let newGood = document.querySelector('#new-good').value;
+    let newMonO = document.querySelector('#new-monO').value;
+    let newMonC = document.querySelector('#new-monC').value;
+    let newTueO = document.querySelector('#new-tueO').value;
+    let newTueC = document.querySelector('#new-tueC').value;
+    let newWenO = document.querySelector('#new-wenO').value;
+    let newWenC = document.querySelector('#new-wenC').value;
+    let newThuO = document.querySelector('#new-thuO').value;
+    let newThuC = document.querySelector('#new-thuC').value;
+    let newFriO = document.querySelector('#new-friO').value;
+    let newFriC = document.querySelector('#new-friC').value;
+    let newSatO = document.querySelector('#new-satO').value;
+    let newSatC = document.querySelector('#new-satC').value;
+    let newSunO = document.querySelector('#new-sunO').value;
+    let newSunC = document.querySelector('#new-sunC').value;
+    let newComment = document.querySelector('#new-comment').value;
+    let newScore = 0;
+    let newImg = "placeholder.jpg";
+
+    // Fail message
+    if (newTitle == "") {
+      alert('Please fill in the field named "New title".');
+    } else {
+      let updatedActivity = {
+        oldTitle: title,
+        title: newTitle,
+        cat: newCat,
+        price: newPrice,
+        indoors: newIndoors,
+        dist: newDist,
+        intro: newIntro,
+        ideal: newIdeal,
+        why: newWhy,
+        cant: newCant,
+        good: newGood,
+        monO: newMonO,
+        monC: newMonC,
+        tueO: newTueO,
+        tueC: newTueC,
+        wenO: newWenO,
+        wenC: newWenC,
+        thuO: newThuO,
+        thuC: newThuC,
+        friO: newFriO,
+        friC: newFriC,
+        satO: newSatO,
+        satC: newSatC,
+        sunO: newSunO,
+        sunC: newSunC,
+        comment: newComment,
+        score: newScore,
+        img: newImg
+      };
+
+      // Delete old document by ID (title)
+      // and create new document with the new title as ID
+      actRef.doc(title).delete().then(function() {
+        actRef.doc(newTitle).set(updatedActivity);
+        alert("Success! " + title + " was updated.");
+      }).catch(function(error) {
+        alert("Oops! Something went wrong.");
+        console.error("Error updating document: ", error);
+      });
+    }
+  }
+
+  //----------------------- DELETE ACTIVITY -----------------------//
+  function deleteActivity() {
+    let id = document.querySelector('#id').value;
+
+    actRef.doc(id).delete().then(function() {
+      alert("Success! " + id + " was deleted.");
+  }).catch(function(error) {
+      alert("Oops! Something went wrong.");
+      console.error("Error removing document: ", error);
+  });
+  }

@@ -17,7 +17,7 @@
     <nav id="admin-nav">
       <h1 id="admin-title">Page administration</h1>
       <button id="addBtn" class="btn btn-active">Add new content</button>
-      <button id="editBtn" class="btn">Edit content</button>
+      <button id="editBtn" class="btn">Edit or delete content</button>
       <button id="imgBtn" class="btn">Upload images</button>
     </nav>
     <br>
@@ -25,8 +25,11 @@
   </header>
 
   <main>
+
+    <!---------------------- ADD NEW ACTIVITY SECTION ---------------------->
+
     <section id="add" class="admin-section">
-      <form>
+      <form id="add-form">
 
           <fieldset>
             <legend><h4>Main information</h4></legend>
@@ -49,8 +52,8 @@
             </div>
             <div class="column">
               <label for="indoors">Indoors / Outdoors:</label><br>
-              <input type="radio" name="indoors" value="true"> Indoors <br>
-              <input type="radio" name="indoors" value="false"> Outdoors <br>
+              <input type="radio" name="indoors" value="indoors"> Indoors <br>
+              <input type="radio" name="indoors" value="outdoors"> Outdoors <br>
               <br>
               <label for="dist">Distance from vacation house:</label><br>
               <input id="dist" type="text" name="dist"  value="7"> Km<br>
@@ -82,7 +85,7 @@
             <legend><h4>Address</h4></legend>
             <div class="column">
               <label for="street">Steet name and number:</label><br>
-              <input id="street" type="text" name="good" value="Street 15"><br>
+              <input id="street" type="text" name="street" value="Street 15"><br>
               <br>
               <label for="postal">Postal code:</label><br>
               <input id="postal" type="text" name="postal" value="8400"><br>
@@ -111,12 +114,13 @@
               <div class="hoursRow"><div class="hoursColumn"><h6>Sunday</h6></div><div class="hoursColumn"><label for="sunO">From:</label></div><div class="hoursColumn"><input id="sunO" type="number" name="sunO" size="8" maxlength="5" value="0800"></div><div class="hoursColumn"><label for="sunC">To:</label></div><div class="hoursColumn"><input id="sunC" type="number" name="sunC" size="8" maxlength="5" value="1700"></div></div><br>
               <br>
               <label for="hoursComment">Comment to hours:</label><br>
-              <input id="good" type="text" name="good" value="Only open May to September."><br>
+              <input id="comment" type="text" name="comment" value="Only open May to September."><br>
           </div>
           </fieldset>
           <br>
           <fieldset>
             <legend><h4>Other</h4></legend>
+            <div style="padding: 5%;">
             <label for="img">Name of image file:</label><br>
             <p>Eg. placeholder.jpg</p>
             <input id="img" type="text" name="img" value="placeholder.jpg"><br>
@@ -125,34 +129,147 @@
             <p>Eg. https://www.google.com/</p>
             <input id="web" type="text" name="web" value="https://www.google.com/"><br>
             <br>
+            </div>
           </fieldset>
           <br>
           <div  class="save">
-            <button id="pushData" class="btn" type="button" name="button">Save</button>
+            <button  class="btn" type="button" name="button" onclick="addNewActivity()">Save</button>
           </div>
         </form>
     </section>
 
-
+    <!---------------------- EDIT ACTIVITY SECTION ---------------------->
 
     <section id="edit" class="admin-section hidden">
-      Edit existing
-      <form action="js/update.js" method="post" enctype="multipart/form-data">
-        <input type="submit" value="Save" name="submit">
+      <form method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend><h4>Main information</h4></legend>
+          <div class="column">
+            <label for="title">Choose an activity to edit or delete:</label><br>
+            <div id="edit-activity"> <!-- --> </div>
+            <br>
+            <input id="id" type="text" name="id" value="">
+            <button type="button" onclick="deleteActivity()" class="delete-btn" style="float: left; width: 100%;"><p id="delete-text">Delete</p></button>
+          </div>
+          <div class="column">
+            <label for="new-title">New title:</label><br>
+            <input id="new-title" type="text" name="new-title" value=""><br>
+            <br>
+            <label for="new-cat">New category:</label><br>
+            <p>Write <i>dining</i>, <i>city</i>, <i>outdoor</i>, <i>amusement</i>, <i>learning</i> or <i>active</i>, in all lowercase letters.</p>
+            <input id="new-cat" type="text" name="new-cat" value=""><br>
+            <br>
+            <label for="new-price">New price class:</label><br>
+            <p>Write <i>$</i>, <i>$$</i> or <i>$$$</i>.</p>
+            <input id="new-price" type="text" name="new-price" value=""><br>
+            <br>
+            <label for="new-indoors">New indoors / outdoors:</label><br>
+            <p>Write <i>indoors</i> or <i>outdoors</i>, in all lowercase letters.</p>
+            <input id="new-indoors" type="text" name="new-indoors" value=""><br>
+            <br>
+            <label for="new-dist">New distance from vacation house:</label><br>
+            <input id="new-dist" type="text" name="new-dist"  value=""> Km<br>
+        </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Activity description</h4></legend>
+          <div class="column">
+            <label for="new-intro">Introduction:</label><br>
+            <input id="new-intro" type="text" name="new-intro" value=""><br>
+            <br>
+            <label for="new-ideal">Ideal for:</label><br>
+            <input id="new-ideal" type="text" name="new-ideal" value=""><br>
+            <br>
+            <label for="new-why">Why we like it:</label><br>
+            <input id="new-why" type="text" name="new-why" value=""><br>
+          </div>
+          <div class="column">
+            <label for="new-cant">Can't miss:</label><br>
+            <input id="new-cant" type="text" name="new-cant" value=""><br>
+            <br>
+            <label for="new-good">Good to know:</label><br>
+            <input id="new-good" type="text" name="new-good" value=""><br>
+          </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Address</h4></legend>
+          <div class="column">
+            <label for="new-street">Steet name and number:</label><br>
+            <input id="new-street" type="text" name="new-street" value=""><br>
+            <br>
+            <label for="new-postal">Postal code:</label><br>
+            <input id="new-postal" type="text" name="new-postal" value=""><br>
+            <br>
+            <label for="new-city">City:</label><br>
+            <input id="new-city" type="text" name="new-city" value=""><br>
+          </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Open hours</h4></legend>
+          <div style="padding: 5%;">
+            <p>Important! Time must be written without colon seperation, for example 12:30 must be written 1230. If the activity is closed on specific day, leave 0000 in the "from" and "to" field.</p><br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Monday</h6></div><div class="hoursColumn"><label for="new-monO">From:</label></div><div class="hoursColumn"><input id="new-monO" type="number" name="new-monO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-monC">To:</label></div><div class="hoursColumn"><input id="new-monC" type="number" name="new-monC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Tuesday</h6></div><div class="hoursColumn"><label for="new-tueO">From:</label></div><div class="hoursColumn"><input id="new-tueO" type="number" name="new-tueO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-tueC">To:</label></div><div class="hoursColumn"><input id="new-tueC" type="number" name="new-tueC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Wednesday</h6></div><div class="hoursColumn"><label for="new-wenO">From:</label></div><div class="hoursColumn"><input id="new-wenO" type="number" name="new-wenO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-wenC">To:</label></div><div class="hoursColumn"><input id="new-wenC" type="number" name="new-wenC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Thursday</h6></div><div class="hoursColumn"><label for="new-thuO">From:</label></div><div class="hoursColumn"><input id="new-thuO" type="number" name="new-thuO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-thuC">To:</label></div><div class="hoursColumn"><input id="new-thuC" type="number" name="new-thuC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Friday</h6></div><div class="hoursColumn"><label for="new-friO">From:</label></div><div class="hoursColumn"><input id="new-friO" type="number" name="new-friO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-friC">To:</label></div><div class="hoursColumn"><input id="new-friC" type="number" name="new-friC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Saturday</h6></div><div class="hoursColumn"><label for="new-satO">From:</label></div><div class="hoursColumn"><input id="new-satO" type="number" name="new-satO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-satC">To:</label></div><div class="hoursColumn"><input id="new-satC" type="number" name="new-satC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <div class="hoursRow"><div class="hoursColumn"><h6>Sunday</h6></div><div class="hoursColumn"><label for="new-sunO">From:</label></div><div class="hoursColumn"><input id="new-sunO" type="number" name="new-sunO" size="8" maxlength="5" value=""></div><div class="hoursColumn"><label for="new-sunC">To:</label></div><div class="hoursColumn"><input id="new-sunC" type="number" name="new-sunC" size="8" maxlength="5" value=""></div></div><br>
+            <br>
+            <label for="hoursComment">Comment to hours:</label><br>
+            <input id="new-comment" type="text" name="new-comment" value=""><br>
+        </div>
+        </fieldset>
+        <br>
+
+        <fieldset>
+          <legend><h4>Other</h4></legend>
+          <div style="padding: 5%;">
+            <label for="new-img">Name of image file:</label><br>
+            <p>Eg. placeholder.jpg</p>
+            <input id="new-img" type="text" name="new-img" value=""><br>
+            <br>
+            <label for="new-web">Activity website:</label><br>
+            <p>Eg. https://www.google.com/</p>
+            <input id="new-web" type="text" name="new-web" value=""><br>
+            <br>
+            </div>
+        </fieldset>
+        <br>
+
+
+        <div  class="save">
+          <button  class="btn" type="button" name="button" onclick="editActivity()">Save</button>
+        </div>
       </form>
     </section>
 
-
+    <!---------------------- UPLOAD IMAGE SECTION ---------------------->
 
     <section id="imgUpload" class="admin-section hidden">
-      Upload image
       <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
-        <h3>Step 1: Choose an image</h3>
-        <label>Select Image</label><br>
-        <input type="file" name="fileToUpload" id="fileToUpload"><br>
-        <br>
-        <h3>Step 2: Upload</h3>
-        <input type="submit" value="Upload image" name="submit">
+        <fieldset>
+          <legend><h4>Upload image</h4></legend>
+          <div style="padding: 5%;">
+            <label>Select Image</label><br>
+            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+          </div>
+        </fieldset>
+        <div style="text-align: center; padding-top: 20px;">
+          <input type="submit" class="btn" value="Upload image" name="submit">
+        </div>
       </form>
     </div>
     </section>
