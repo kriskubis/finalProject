@@ -27,10 +27,6 @@
 
 .admin-section {
     width: 100%;
-
-    p {
-        font-size: 18px;
-    }
     
     fieldset {
         width: 70%;
@@ -76,6 +72,54 @@
 
         &:nth-of-type(5) {
             width: 30px;
+        }
+    }
+}
+
+#id {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.delete-btn {
+    padding: 10px 4px;
+    border-radius: 5px;
+    color: $white;
+    background-color: $grey;
+
+    &:hover {
+        background-color: darkred;
+    }
+    
+    p {
+        line-height: 14px;
+        font-family: $font-body;
+        margin: 0;
+    }
+
+    @include shadow-slim
+}
+
+#edit-activity {
+    height: 300px;
+    width: 100%;
+    border: 2px solid $light-grey;
+    overflow-y: scroll;
+
+    article {
+        height: 30px;
+        background-color: #f0f0f0;
+        border: 2px solid $white;
+
+        :hover {
+          background-color: $sky;  
+        }
+
+        h6 {
+            line-height: 26px;
+            font-size: 16px;
+            font-family: $font-title;
+            padding: 2px 8px;
         }
     }
 }
