@@ -74,9 +74,10 @@ function appendActivities(acts) {
       document.getElementById('result-lead').classList.add('hidden'); 
       document.getElementById('first-column').style.width = '70%';
       document.getElementById('first-column').style.margin = '0';
+      document.getElementById('return-div').style.width = '100%';
       document.getElementById('second-column').innerHTML = '(Practical info will be here)';
       document.getElementById('page-title').innerHTML = '${act.data().title}';
-      document.getElementById('page-info').innerHTML = '<div><p>${act.data().intro}</p><br><h5>Ideal for</h5><p>${act.data().ideal}</p></div><div><h5>Why we like it</h5><p>${act.data().why}</p><br><h5>Do not miss</h5><p>${act.data().cant}</p><br><h5>Good to know</h5><p>${act.data().good}</p></div>';" 
+      document.getElementById('page-info').innerHTML = '<div><p>${act.data().intro}</p><br><h5>Ideal for</h5><p>${act.data().ideal}</p><br><h5>Why we like it</h5><p>${act.data().why}</p><br></div><div><h5>Do not miss</h5><p>${act.data().cant}</p><br><h5>Good to know</h5><p>${act.data().good}</p></div>';" 
       style="background-image: url('uploads/${act.data().img}');">
       <div class="card-head">
         <h4>${act.data().title}</h4>
