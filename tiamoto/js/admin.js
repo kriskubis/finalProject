@@ -87,9 +87,9 @@ var firebaseConfig = {
     } else {
       let newActivity = {
         title: title,
-        cat = document.querySelector('input[name="cat"]:checked').value,
-        price = document.querySelector('input[name="price"]:checked').value,
-        ndoors = document.querySelector('input[name="indoors"]:checked').value,
+        cat : document.querySelector('input[name="cat"]:checked').value,
+        price : document.querySelector('input[name="price"]:checked').value,
+        ndoors : document.querySelector('input[name="indoors"]:checked').value,
         dist: dist,
         intro: intro,
         ideal: ideal,
