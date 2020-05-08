@@ -58,31 +58,7 @@ var firebaseConfig = {
     $("#imgBtn").click(function() {
         $("#admin-title").text("Uploading new image");
         $("#add").addClass("hidden");
-        $("#edit").addClass("hidden");
-        $("#imgUpload").removeClass("hidden");
-    });
-  });
-  
-  //----------------------- ADD NEW ACTIVITY -----------------------//
-  // Get values of radio options
-  var cat = "city"; // Trying to make these global
-  var price = "$"; // Trying to make these global
-  var indoors = "indoors"; // Trying to make these global
-  
-  jQuery(function(){
-    $("input[name='cat']").click(function(){
-        var cat = $("input[name='cat']:checked").val();
-        console.log(cat);
-    });
-  
-    $("input[name='price']").click(function(){
-        var price = $("input[name='price']:checked").val();
-        console.log(price);
-    });
-  
-    $("input[name='indoors']").click(function(){
-        var indoors = $("input[name='indoors']:checked").val();
-        console.log(indoors);
+        $("#edit").removeClass("hidden");
     });
   });
   
