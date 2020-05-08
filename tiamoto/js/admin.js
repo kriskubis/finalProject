@@ -55,73 +55,50 @@ var firebaseConfig = {
   });
 
   $(function() {
-    $("#imgUpload").click(function() {
+    $("#imgBtn").click(function() {
         $("#admin-title").text("Upload new image");
-        $("#imgUpload").addClass("hidden");
+        $("#edit").addClass("hidden");
         $("#add").addClass("hidden");
-        $("#edit").removeClass("hidden");
+        $("#imgUpload").removeClass("hidden");
     });
   });
 
   function addNewActivity() {
     // Fields
     let title = document.querySelector('#title').value;
-    let dist = document.querySelector('#dist').value;
-    let intro = document.querySelector('#intro').value;
-    let ideal = document.querySelector('#ideal').value;
-    let why = document.querySelector('#why').value;
-    let cant = document.querySelector('#cant').value;
-    let good = document.querySelector('#good').value;
-    let monO = document.querySelector('#monO').value;
-    let monC = document.querySelector('#monC').value;
-    let tueO = document.querySelector('#tueO').value;
-    let tueC = document.querySelector('#tueC').value;
-    let wenO = document.querySelector('#wenO').value;
-    let wenC = document.querySelector('#wenC').value;
-    let thuO = document.querySelector('#thuO').value;
-    let thuC = document.querySelector('#thuC').value;
-    let friO = document.querySelector('#friO').value;
-    let friC = document.querySelector('#friC').value;
-    let satO = document.querySelector('#satO').value;
-    let satC = document.querySelector('#satC').value;
-    let sunO = document.querySelector('#sunO').value;
-    let sunC = document.querySelector('#sunC').value;
-    let comment = document.querySelector('#comment').value;
-    let score = 0;
-    let img = "placeholder.jpg";
 
     // Fail message
     if (title == "") {
       alert('Oops, something is missing. Please fill in the field named "Activity Title".');
     } else {
       let newActivity = {
-        title: title,
+        title: document.querySelector('#title').value,
         cat : document.querySelector('input[name="cat"]:checked').value,
         price : document.querySelector('input[name="price"]:checked').value,
         indoors : document.querySelector('input[name="indoors"]:checked').value,
-        dist: dist,
-        intro: intro,
-        ideal: ideal,
-        why: why,
-        cant: cant,
-        good: good,
-        monO: monO,
-        monC: monC,
-        tueO: tueO,
-        tueC: tueC,
-        wenO: wenO,
-        wenC: wenC,
-        thuO: thuO,
-        thuC: thuC,
-        friO: friO,
-        friC: friC,
-        satO: satO,
-        satC: satC,
-        sunO: sunO,
-        sunC: sunC,
-        comment: comment,
-        score: score,
-        img: img
+        dist: document.querySelector('#dist').value,
+        intro : document.querySelector('#intro').value,
+        ideal : document.querySelector('#ideal').value,
+        why : document.querySelector('#why').value,
+        cant : document.querySelector('#cant').value,
+        good : document.querySelector('#good').value,
+        monO : document.querySelector('#monO').value,
+        monC : document.querySelector('#monC').value,
+        tueO : document.querySelector('#tueO').value,
+        tueC : document.querySelector('#tueC').value,
+        wenO : document.querySelector('#wenO').value,
+        wenC : document.querySelector('#wenC').value,
+        thuO : document.querySelector('#thuO').value,
+        thuC : document.querySelector('#thuC').value,
+        friO : document.querySelector('#friO').value,
+        friC : document.querySelector('#friC').value,
+        satO : document.querySelector('#satO').value,
+        satC : document.querySelector('#satC').value,
+        sunO : document.querySelector('#sunO').value,
+        sunC : document.querySelector('#sunC').value,
+        comment : document.querySelector('#comment').value,
+        score : 0,
+        img : "placeholder.jpg"
       };
     
       console.log(newActivity);
