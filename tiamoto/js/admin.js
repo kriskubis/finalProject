@@ -53,15 +53,16 @@ var firebaseConfig = {
         $("#edit").removeClass("hidden");
     });
   });
-  
+
   $(function() {
-    $("#imgBtn").click(function() {
-        $("#admin-title").text("Uploading new image");
+    $("#imgUpload").click(function() {
+        $("#admin-title").text("Upload new image");
+        $("#imgUpload").addClass("hidden");
         $("#add").addClass("hidden");
         $("#edit").removeClass("hidden");
     });
   });
-  
+
   function addNewActivity() {
     // Fields
     let title = document.querySelector('#title').value;
@@ -95,9 +96,9 @@ var firebaseConfig = {
     } else {
       let newActivity = {
         title: title,
-        cat: cat,
-        price: price,
-        indoors: indoors,
+        cat : document.querySelector('input[name="cat"]:checked').value,
+        price : document.querySelector('input[name="price"]:checked').value,
+        indoors : document.querySelector('input[name="indoors"]:checked').value,
         dist: dist,
         intro: intro,
         ideal: ideal,
