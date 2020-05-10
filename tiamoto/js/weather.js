@@ -17,14 +17,18 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(weather);
 
         if (weather == "Sunny") {
-          alert("The weather is " + weather)
-          // Change background here
+          document.getElementById('weather').style.backgroundImage = "url('media/sunny.jpeg')";
+          console.log("The weather is " + weather)
+        } else if (weather == "Partly cloudy") {
+          document.getElementById('weather').style.backgroundImage = "url('media/partly-cloudy.jpeg')";
+          console.log("The weather is " + weather)
+        } else if (weather == "Overcast") {
+          document.getElementById('weather').style.backgroundImage = "url('media/cloudy.jpeg')";
+          console.log("The weather is " + weather)
+        } else {
+          document.getElementById('weather').style.backgroundImage = "url('media/partly-cloudy.jpeg')";
+          console.log("The weather is " + weather)
         };
-
-        if (weather == "Partly cloudy") {
-          alert("The weather is " + weather)
-          // Change background here
-      };
         
       });
   
