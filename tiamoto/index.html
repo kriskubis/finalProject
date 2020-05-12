@@ -7,6 +7,7 @@
   <meta name="description" content="En personlig guide til området, lavet til Tiamotos besøgende.">
   <meta name="author" content="Tiamoto">
   <title>Welcome | Tiamoto</title>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;700&family=Lora:wght@600&family=Spartan&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -39,18 +40,24 @@
         </div>
       </div>
       <section class="filter-section">
-        <form>
+        
+        
+        <form id="survey-form">
         <div class="question" id="q1">
           <div>
             <h4>Question 1 of 4</h4>
             <h3>Who are you?</h3>
             <p>To give you the best recommendations, we would like to know you a little better.<br>
               <br>* Choose "Challenged" if you are traveling with small children or someone physically challenged.</p>
+              <br>
+              <input type="radio" name="q1" value="couple"> Couple <br>
+              <input type="radio" name="q1" value="group"> Group <br>
+              <input type="radio" name="q1" value="family"> Family <br>
+              <input type="radio" name="q1" value="challenged"> Challenged * <br>
           </div>
           <div>
             <video autoplay loop>
               <source src="media/dad.mp4" type="video/mp4">
-                <img src="media/dad-and-child.png" alt="illustration" style="width: 600px;">
             </video>
           </div>
         </div>
@@ -59,24 +66,33 @@
             <h4>Question 2 of 4</h4>
             <h3>What are your interests?</h3>
             <p>Choose one or more.</p>
+            <br>
+            <input type="checkbox" name="q2" value="dining"> Dining out <br>
+            <input type="checkbox" name="q2" value="city"> Exploring the city <br>
+            <input type="checkbox" name="q2" value="outdoor"> Relaxed outdoor activities <br>
+            <input type="checkbox" name="q2" value="amusement"> Amusement <br>
+            <input type="checkbox" name="q2" value="learning"> Learning / Sightseeing <br>
+            <input type="checkbox" name="q2" value="active"> Active <br>
           </div>
           <div>
             <video autoplay loop>
               <source src="media/woman.mp4" type="video/mp4">
-              <img src="media/woman-and-seals.png" alt="illustration" style="width: 600px;">
             </video>
           </div>
         </div>
         <div class="question" id="q3">
           <div>
             <h4>Question 3 of 4</h4>
-            <h3>Howfar are you willing to travel?</h3>
+            <h3>How far are you willing to travel?</h3>
             <p>Not all want to travel far. Tell us the ratio in which you want to explore.</p>
+            <br>
+            <input type="radio" name="q3" value="5"> &#60; 5 km <br>
+            <input type="radio" name="q3" value="20>"> &#60; 20 km <br>
+            <input type="radio" name="q3" value="40"> &#60; 40 km <br>
           </div>
           <div>
             <video autoplay loop>
               <source src="media/woman.mp4" type="video/mp4">
-              <img src="media/woman-and-seals.png" alt="illustration" style="width: 600px;">
             </video>
           </div></div>
         <div class="question" id="q4">
@@ -85,18 +101,23 @@
             <h3>What is your budget?</h3>
             <p>$ indicates free or low-cost activities,<br>
             $$$ indicates expensive activities.</p>
+            <br>
+            <input type="radio" name="q4" value="$"> $ <br>
+            <input type="radio" name="q4" value="$$"> $$ <br>
+            <input type="radio" name="q4" value="$$$"> $$$ <br>
           </div>
           <div>
             <video autoplay loop>
               <source src="media/deer.mp4" type="video/mp4">
-              <img src="media/deer.png" alt="illustration" style="width: 600px;">
             </video>
           </div>
         </div>
         <div class="save">
-          <button  class="btn btn-active" type="button" name="button" onclick="">PROCEED</button>
+          <button class="btn btn-active" type="button" name="button" onclick="filter()">PROCEED</button>
         </div>
         </form>
+
+
       </section>
     </div>
   </main>
