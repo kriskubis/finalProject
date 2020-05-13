@@ -45,14 +45,17 @@ function addNewActivity() {
   } else {
 
     // Popularity ranking
-    if ((document.querySelector('input[name="cat"]:checked').value == 'dining') || (document.querySelector('input[name="cat"]:checked').value == 'city')) {
-      var catScore = 3
-    } else if (document.querySelector('input[name="cat"]:checked').value == 'outdoor') {
-      var catScore = 2
-    } else if ((document.querySelector('input[name="cat"]:checked').value == 'amusement') || (document.querySelector('input[name="cat"]:checked').value == 'learning')) {
-      var catScore = 1
+    var catScore = 0;
+    var category = document.querySelector('input[name="cat"]:checked').value;
+
+    if ((category == 'dining') || (category == 'city')) {
+      catScore = 3
+    } else if (category == 'outdoor') {
+      catScore = 2
+    } else if ((category == 'amusement') || (category == 'learning')) {
+      catScore = 1
     } else {
-      var catScore = 0
+      catScore = 0
     };
 
     let newActivity = {
@@ -65,6 +68,9 @@ function addNewActivity() {
       dist: document.querySelector('#dist').value,
       intro : document.querySelector('#intro').value,
       ideal : document.querySelector('#ideal').value,
+      street: document.querySelector('#street').value,
+      city : document.querySelector('#city').value,
+      postal : document.querySelector('#postal').value,
       why : document.querySelector('#why').value,
       cant : document.querySelector('#cant').value,
       good : document.querySelector('#good').value,
@@ -84,7 +90,8 @@ function addNewActivity() {
       sunC : document.querySelector('#sunC').value,
       comment : document.querySelector('#comment').value,
       score : catScore,
-      img : "placeholder.jpg"
+      img : "placeholder.jpg",
+      web : document.querySelector('#web').value
     };
   
     console.log(newActivity);
@@ -159,14 +166,17 @@ function appendFields(acts) {
 // Update functionality
 function editActivity() {
   // Popularity ranking
-  if ((document.querySelector('input[name="new-cat"]:checked').value == 'dining') || (document.querySelector('input[name="new-cat"]:checked').value == 'city')) {
-    var catScore = 3
-  } else if (document.querySelector('input[name="new-cat"]:checked').value == 'outdoor') {
-    var catScore = 2
-  } else if ((document.querySelector('input[name="new-cat"]:checked').value == 'amusement') || (document.querySelector('input[name="new-cat"]:checked').value == 'learning')) {
-    var catScore = 1
+  var catScore = 0;
+  var category = document.querySelector('#new-cat').value;
+
+  if ((category == 'dining') || (category == 'city')) {
+    catScore = 3
+  } else if (category == 'outdoor') {
+    catScore = 2
+  } else if ((category == 'amusement') || (category == 'learning')) {
+    catScore = 1
   } else {
-    var catScore = 0
+    catScore = 0
   };
 
   // Fields
