@@ -37,6 +37,12 @@
               <label for="title">Activity title:</label><br>
               <input id="title" type="text" name="title" value="Some title"><br>
               <br>
+              <label for="aud">Audience:</label><br>
+              <input type="radio" name="aud" value="couple"> Couple <br>
+              <input type="radio" name="aud" value="group"> Group <br>
+              <input type="radio" name="aud" value="family"> Family <br>
+              <input type="radio" name="aud" value="challenged"> Challenged <br>
+              <br>
               <label for="cat">Category:</label><br>
               <input type="radio" name="cat" value="dining"> Dining Out <br>
               <input type="radio" name="cat" value="city"> Exploring the City <br>
@@ -44,13 +50,13 @@
               <input type="radio" name="cat" value="amusement"> Amusement <br>
               <input type="radio" name="cat" value="learning"> Learning <br>
               <input type="radio" name="cat" value="active"> Active <br>
-              <br>
+            </div>
+            <div class="column">
               <label for="price">Price class:</label><br>
               <input type="radio" name="price" value="$"> $ <br>
               <input type="radio" name="price" value="$$"> $$ <br>
               <input type="radio" name="price" value="$$$"> $$$ <br>
-            </div>
-            <div class="column">
+              <br>
               <label for="indoors">Indoors / Outdoors:</label><br>
               <input type="radio" name="indoors" value="indoors"> Indoors <br>
               <input type="radio" name="indoors" value="outdoors"> Outdoors <br>
@@ -155,6 +161,9 @@
             <label for="new-title">New title:</label><br>
             <input id="new-title" type="text" name="new-title" value=""><br>
             <br>
+            <label for="new-aud">New audience:</label><br>
+            <p>Write <i>couple</i>, <i>group</i>, <i>family</i> or <i>challenged</i>, in all lowercase letters.</p>
+            <input id="new-aud" type="text" name="new-aud" value=""><br>  
             <label for="new-cat">New category:</label><br>
             <p>Write <i>dining</i>, <i>city</i>, <i>outdoor</i>, <i>amusement</i>, <i>learning</i> or <i>active</i>, in all lowercase letters.</p>
             <input id="new-cat" type="text" name="new-cat" value=""><br>

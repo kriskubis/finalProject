@@ -17,23 +17,14 @@ var firebaseConfig = {
   
   const db = firebase.firestore();
   const actRef = db.collection("activities");
-  const scoreRef = db.collection("score");
-  const titleRef = db.collection("title");
-  const distRef = db.collection("dist");
-  const catRef = db.collection("cat");
-  const priceRef = db.collection("price");
 
 //----------------------- FILTER -----------------------//
 function filter() {
-    // Filter activities based on form
+    // Save filter to local storage
+    localStorage.setItem('q1', document.querySelector('input[name="q1"]:checked').value);
+    localStorage.setItem('q2', document.querySelector('input[name="q2"]:checked').value);
+    localStorage.setItem('q3', document.querySelector('input[name="q3"]:checked').value);
+    localStorage.setItem('q4', document.querySelector('input[name="q4"]:checked').value);
 
-    let who = document.querySelector('input[name="q1"]:checked').value;
-    let howFar = document.querySelector('input[name="q3"]:checked').value;
-    let budget = document.querySelector('input[name="q4"]:checked').value;
-    
-    let interests = document.querySelector('input[name="q2a"]:checked').value;
-
-    console.log('Filters: ' + who + ' ' + interests + ' ' + howFar + ' ' + budget)
-
-
+    window.location.pathname = 'tiamoto/result.html'
 };
