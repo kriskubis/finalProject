@@ -57,19 +57,48 @@ function appendActivities(acts) {
   let htmlTemplate = "";
   for (let act of acts) {
       
-      // Converte distance from string to number
-      // (Distance is passed as string to Firebase by default)
+      // Converte distance from string to number (Passed as string to Firebase by default)
       var distance = act.data().dist;
       var distNumber = parseInt(distance, 10);
 
-      // Converte dollars to number
-      // (Distance is passed as string to Firebase by default)
+      // Converte dollars to number (Passed as string to Firebase by default)
       var howFarLength = howFar.length;
       var price = act.data().price;
       var priceLength = price.length;
 
-    // If statement will filter by the search saved in local storage, before appending the entries
-    if ((act.data().aud == whoAre) && (act.data().cat == interests) && (distNumber <= howFar) && (priceLength <= howFarLength)) {
+      // Converte category from string to array (Passed as string to Firebase by default)
+      var category = act.data().cat;
+      var catArray = category.split();
+
+    // If statement will filter by the search saved in local storage (see in console)
+    if ((whoAre == 'challenged') && (act.data().friendly == 'yes') && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= howFarLength)) {
+      console.log('"' + act.data().title + '" is applicable for this search.')
+
+      htmlTemplate += `
+      <article class="activityCard" onClick="document.getElementById('return').innerHTML = '<h4>Go back</h4>'; 
+        document.getElementById('activityGrid').classList.add('hidden');
+        document.getElementById('result-lead').classList.add('hidden'); 
+        document.getElementById('first-column').style.width = '70%';
+        document.getElementById('first-column').style.margin = '0';
+        document.getElementById('return-div').style.width = '100%';
+        document.getElementById('second-column').innerHTML = '(Practical info will be here)';
+        document.getElementById('page-title').innerHTML = '${act.data().title}';
+        document.getElementById('page-info').innerHTML = '<div><p>${act.data().intro}</p><br><h5>Ideal for</h5><p>${act.data().ideal}</p><br><h5>Why we like it</h5><p>${act.data().why}</p><br></div><div><h5>Do not miss</h5><p>${act.data().cant}</p><br><h5>Good to know</h5><p>${act.data().good}</p></div>';" 
+        style="background-image: url('uploads/${act.data().img}');">
+        <div class="card-head">
+          <h4>${act.data().title}</h4>
+          <h5>Open<br>${act.data().dist} km</h5>
+        </div>
+        <div class="card-description">
+          <h6>${act.data().title}</h6>
+          <p>${act.data().intro}</p>
+        </div>
+        <div class="${act.data().cat}-bg card-btn">
+        <img src="media/plus.svg" alt="read more" style="width: 80%; padding: 10%; color: black;">
+        </div>
+      </article>        
+      `;
+    } else if ((act.data().aud == whoAre) && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= howFarLength)) {
       console.log('"' + act.data().title + '" is applicable for this search.')
 
       htmlTemplate += `
@@ -97,6 +126,8 @@ function appendActivities(acts) {
       </article>        
       `;
     }
+
+
   }
   document.querySelector('#activityGrid').innerHTML = htmlTemplate;
 }

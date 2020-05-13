@@ -45,14 +45,17 @@ function addNewActivity() {
   } else {
 
     // Popularity ranking
-    if ((document.querySelector('input[name="cat"]:checked').value == 'dining') || (document.querySelector('input[name="cat"]:checked').value == 'city')) {
-      var catScore = 3
-    } else if (document.querySelector('input[name="cat"]:checked').value == 'outdoor') {
-      var catScore = 2
-    } else if ((document.querySelector('input[name="cat"]:checked').value == 'amusement') || (document.querySelector('input[name="cat"]:checked').value == 'learning')) {
-      var catScore = 1
+    var catScore = 0;
+    var category = document.querySelector('input[name="cat"]:checked').value;
+
+    if ((category == 'dining') || (category == 'city')) {
+      catScore = 3
+    } else if (category == 'outdoor') {
+      catScore = 2
+    } else if ((category == 'amusement') || (category == 'learning')) {
+      catScore = 1
     } else {
-      var catScore = 0
+      catScore = 0
     };
 
     let newActivity = {
@@ -61,9 +64,13 @@ function addNewActivity() {
       cat : document.querySelector('input[name="cat"]:checked').value,
       price : document.querySelector('input[name="price"]:checked').value,
       indoors : document.querySelector('input[name="indoors"]:checked').value,
+      friendly : document.querySelector('input[name="friendly"]:checked').value,
       dist: document.querySelector('#dist').value,
       intro : document.querySelector('#intro').value,
       ideal : document.querySelector('#ideal').value,
+      street: document.querySelector('#street').value,
+      city : document.querySelector('#city').value,
+      postal : document.querySelector('#postal').value,
       why : document.querySelector('#why').value,
       cant : document.querySelector('#cant').value,
       good : document.querySelector('#good').value,
@@ -83,7 +90,8 @@ function addNewActivity() {
       sunC : document.querySelector('#sunC').value,
       comment : document.querySelector('#comment').value,
       score : catScore,
-      img : "placeholder.jpg"
+      img : "placeholder.jpg",
+      web : document.querySelector('#web').value
     };
   
     console.log(newActivity);
@@ -116,6 +124,7 @@ function appendFields(acts) {
     document.getElementById('new-price').value = '${act.data().price}';
     document.getElementById('new-indoors').value = '${act.data().indoors}';
     document.getElementById('new-dist').value = '${act.data().dist}';
+    document.getElementById('new-friendly').value = '${act.data().friendly}';
 
     document.getElementById('new-intro').value = '${act.data().intro}';
     document.getElementById('new-ideal').value = '${act.data().ideal}';
@@ -157,14 +166,17 @@ function appendFields(acts) {
 // Update functionality
 function editActivity() {
   // Popularity ranking
-  if ((document.querySelector('input[name="new-cat"]:checked').value == 'dining') || (document.querySelector('input[name="new-cat"]:checked').value == 'city')) {
-    var catScore = 3
-  } else if (document.querySelector('input[name="new-cat"]:checked').value == 'outdoor') {
-    var catScore = 2
-  } else if ((document.querySelector('input[name="new-cat"]:checked').value == 'amusement') || (document.querySelector('input[name="new-cat"]:checked').value == 'learning')) {
-    var catScore = 1
+  var catScore = 0;
+  var category = document.querySelector('#new-cat').value;
+
+  if ((category == 'dining') || (category == 'city')) {
+    catScore = 3
+  } else if (category == 'outdoor') {
+    catScore = 2
+  } else if ((category == 'amusement') || (category == 'learning')) {
+    catScore = 1
   } else {
-    var catScore = 0
+    catScore = 0
   };
 
   // Fields
@@ -175,6 +187,7 @@ function editActivity() {
   let newPrice = document.querySelector('#new-price').value;
   let newIndoors = document.querySelector('#new-indoors').value;
   let newDist = document.querySelector('#new-dist').value;
+  let newFriendly = document.querySelector('#new-friendly').value;
   let newIntro = document.querySelector('#new-intro').value;
   let newIdeal = document.querySelector('#new-ideal').value;
   let newWhy = document.querySelector('#new-why').value;
@@ -210,6 +223,7 @@ function editActivity() {
       price: newPrice,
       indoors: newIndoors,
       dist: newDist,
+      friendly: newFriendly,
       intro: newIntro,
       ideal: newIdeal,
       why: newWhy,
