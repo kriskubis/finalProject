@@ -1,31 +1,3 @@
-//----------------------- FIREBASE -----------------------//
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyBaXpDbJvr5P4cyveLlC5SODF_b57LQmcc",
-  authDomain: "finalproject-c1daa.firebaseapp.com",
-  databaseURL: "https://finalproject-c1daa.firebaseio.com",
-  projectId: "finalproject-c1daa",
-  storageBucket: "finalproject-c1daa.appspot.com",
-  messagingSenderId: "804528166915",
-  appId: "1:804528166915:web:127d130559acd85c005636"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-const actRef = db.collection("activities");
-const scoreRef = db.collection("score");
-const titleRef = db.collection("title");
-const introRef = db.collection("intro");
-const imgRef = db.collection("img");
-const distRef = db.collection("dist");
-const catRef = db.collection("cat");
-const idealRef = db.collection("ideal");
-const whyRef = db.collection("why");
-const cantRef = db.collection("cant");
-const goodRef = db.collection("good");
-
 //----------------------- SINGLE-PAGE FUNCTIONALITY -----------------------//
 // Change active button (the colour green) with jQuery
 $(function() {
@@ -71,8 +43,21 @@ function addNewActivity() {
   if (title == "") {
     alert('Oops, something is missing. Please fill in the field named "Activity Title".');
   } else {
+
+    // Popularity ranking
+    if ((document.querySelector('input[name="cat"]:checked').value == 'dining') || (document.querySelector('input[name="cat"]:checked').value == 'city')) {
+      var catScore = 3
+    } else if (document.querySelector('input[name="cat"]:checked').value == 'outdoor') {
+      var catScore = 2
+    } else if ((document.querySelector('input[name="cat"]:checked').value == 'amusement') || (document.querySelector('input[name="cat"]:checked').value == 'learning')) {
+      var catScore = 1
+    } else {
+      var catScore = 0
+    };
+
     let newActivity = {
       title: document.querySelector('#title').value,
+      aud: document.querySelector('input[name="aud"]:checked').value,
       cat : document.querySelector('input[name="cat"]:checked').value,
       price : document.querySelector('input[name="price"]:checked').value,
       indoors : document.querySelector('input[name="indoors"]:checked').value,
@@ -97,7 +82,7 @@ function addNewActivity() {
       sunO : document.querySelector('#sunO').value,
       sunC : document.querySelector('#sunC').value,
       comment : document.querySelector('#comment').value,
-      score : 0,
+      score : catScore,
       img : "placeholder.jpg"
     };
   
@@ -126,6 +111,7 @@ function appendFields(acts) {
     document.getElementById('delete-text').innerHTML = 'Delete ${act.data().title}';
 
     document.getElementById('new-title').value = '${act.data().title}';
+    document.getElementById('new-aud').value = '${act.data().aud}';
     document.getElementById('new-cat').value = '${act.data().cat}';
     document.getElementById('new-price').value = '${act.data().price}';
     document.getElementById('new-indoors').value = '${act.data().indoors}';
@@ -170,10 +156,22 @@ function appendFields(acts) {
 
 // Update functionality
 function editActivity() {
+  // Popularity ranking
+  if ((document.querySelector('input[name="new-cat"]:checked').value == 'dining') || (document.querySelector('input[name="new-cat"]:checked').value == 'city')) {
+    var catScore = 3
+  } else if (document.querySelector('input[name="new-cat"]:checked').value == 'outdoor') {
+    var catScore = 2
+  } else if ((document.querySelector('input[name="new-cat"]:checked').value == 'amusement') || (document.querySelector('input[name="new-cat"]:checked').value == 'learning')) {
+    var catScore = 1
+  } else {
+    var catScore = 0
+  };
+
   // Fields
   let title = document.querySelector('#id').value;
   let newTitle = document.querySelector('#new-title').value;
   let newCat = document.querySelector('#new-cat').value;
+  let newAud = document.querySelector('#new-aud').value;
   let newPrice = document.querySelector('#new-price').value;
   let newIndoors = document.querySelector('#new-indoors').value;
   let newDist = document.querySelector('#new-dist').value;
@@ -197,7 +195,7 @@ function editActivity() {
   let newSunO = document.querySelector('#new-sunO').value;
   let newSunC = document.querySelector('#new-sunC').value;
   let newComment = document.querySelector('#new-comment').value;
-  let newScore = 0;
+  let newScore = catScore;
   let newImg = "placeholder.jpg";
 
   // Fail message
@@ -208,6 +206,7 @@ function editActivity() {
       oldTitle: title,
       title: newTitle,
       cat: newCat,
+      aud: newAud,
       price: newPrice,
       indoors: newIndoors,
       dist: newDist,
