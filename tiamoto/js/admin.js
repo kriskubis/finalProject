@@ -61,6 +61,7 @@ function addNewActivity() {
       cat : document.querySelector('input[name="cat"]:checked').value,
       price : document.querySelector('input[name="price"]:checked').value,
       indoors : document.querySelector('input[name="indoors"]:checked').value,
+      friendly : document.querySelector('input[name="friendly"]:checked').value,
       dist: document.querySelector('#dist').value,
       intro : document.querySelector('#intro').value,
       ideal : document.querySelector('#ideal').value,
@@ -116,6 +117,7 @@ function appendFields(acts) {
     document.getElementById('new-price').value = '${act.data().price}';
     document.getElementById('new-indoors').value = '${act.data().indoors}';
     document.getElementById('new-dist').value = '${act.data().dist}';
+    document.getElementById('new-friendly').value = '${act.data().friendly}';
 
     document.getElementById('new-intro').value = '${act.data().intro}';
     document.getElementById('new-ideal').value = '${act.data().ideal}';
@@ -175,6 +177,7 @@ function editActivity() {
   let newPrice = document.querySelector('#new-price').value;
   let newIndoors = document.querySelector('#new-indoors').value;
   let newDist = document.querySelector('#new-dist').value;
+  let newFriendly = document.querySelector('#new-friendly').value;
   let newIntro = document.querySelector('#new-intro').value;
   let newIdeal = document.querySelector('#new-ideal').value;
   let newWhy = document.querySelector('#new-why').value;
@@ -210,6 +213,7 @@ function editActivity() {
       price: newPrice,
       indoors: newIndoors,
       dist: newDist,
+      friendly: newFriendly,
       intro: newIntro,
       ideal: newIdeal,
       why: newWhy,

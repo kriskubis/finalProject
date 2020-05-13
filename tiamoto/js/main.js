@@ -19,10 +19,21 @@ var firebaseConfig = {
   const actRef = db.collection("activities");
 
 //----------------------- FILTER -----------------------//
+$("input[type=checkbox]").on("change", function(){
+  var arr = []
+  $(":checkbox").each(function(){
+     if($(this).is(":checked")){
+       arr.push($(this).val())
+     }
+  })
+  
+  // Save interest filter to local storage
+  localStorage.setItem('q2', arr);
+})
+
 function filter() {
-    // Save filter to local storage
+    // Save remaining filters to local storage
     localStorage.setItem('q1', document.querySelector('input[name="q1"]:checked').value);
-    localStorage.setItem('q2', document.querySelector('input[name="q2"]:checked').value);
     localStorage.setItem('q3', document.querySelector('input[name="q3"]:checked').value);
     localStorage.setItem('q4', document.querySelector('input[name="q4"]:checked').value);
 
