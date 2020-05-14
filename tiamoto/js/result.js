@@ -62,7 +62,7 @@ function appendActivities(acts) {
       var distNumber = parseInt(distance, 10);
 
       // Converte dollars to number (Passed as string to Firebase by default)
-      var howFarLength = howFar.length;
+      var budgetLength = budget.length;
       var price = act.data().price;
       var priceLength = price.length;
 
@@ -71,7 +71,7 @@ function appendActivities(acts) {
       var catArray = category.split();
 
     // If statement will filter by the search saved in local storage (see in console)
-    if ((whoAre == 'challenged') && (act.data().friendly == 'yes') && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= howFarLength)) {
+    if ((whoAre == 'challenged') && (act.data().friendly == 'yes') && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= budgetLength)) {
       console.log('"' + act.data().title + '" is applicable for this search.')
 
       htmlTemplate += `
@@ -98,7 +98,7 @@ function appendActivities(acts) {
         </div>
       </article>        
       `;
-    } else if ((act.data().aud == whoAre) && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= howFarLength)) {
+    } else if ((act.data().aud == whoAre) && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= budgetLength)) {
       console.log('"' + act.data().title + '" is applicable for this search.')
 
       htmlTemplate += `
