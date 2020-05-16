@@ -17,9 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (weather == "Sunny") {
           document.getElementById('weather').style.backgroundImage = "url('media/sunny.jpeg')";
-        } else if (weather == "Partly cloudy") {
+        } else if (weather == "Partly Cloudy") {
           document.getElementById('weather').style.backgroundImage = "url('media/partly-cloudy.jpeg')";
         } else if (weather == "Overcast") {
+          document.getElementById('weather').style.backgroundImage = "url('media/cloudy.jpeg')";
+        } else if (weather == "Light Drizzle") {
           document.getElementById('weather').style.backgroundImage = "url('media/cloudy.jpeg')";
         } else {
           document.getElementById('weather').style.backgroundImage = "url('media/partly-cloudy.jpeg')";

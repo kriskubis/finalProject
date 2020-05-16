@@ -18,7 +18,7 @@
 <body>
 
   <main>
-    <div class="page-top map">
+    <div class="page-top map" id="banner">
       <div id="map">
       </div>
     </div>
@@ -30,6 +30,7 @@
         <div class="first-column" id="first-column">
           <h3 id="result-lead">Here is your personalised</h3>
           <h2 id="page-title">Recommendations</h2>
+          <h3 id="dist-price"></h3>
           <section id="page-info">
             <p>We’ve listed our top picks based on your answers below.<br><br>
               Don’t like what you see? You can start over and choose new categories.</p>
@@ -39,22 +40,76 @@
             <button id="return" class="btn-slim" onClick="returnBtn()"><h4>Try again</h4></button>
           </div>
         </div>
-        <div class="second-column" id="second-column" style="text-align: right; padding-top: 120px;">
-          <div style="float: right; width: 10%;">
-            <div class="cat-colour"></div>
-            <div class="cat-colour"></div>
-            <div class="cat-colour"></div>
-            <div class="cat-colour"></div>
-            <div class="cat-colour"></div>
-            <div class="cat-colour"></div>
+        <div class="second-column" id="second-column">
+          <div id="info-wrapper" class="info-wrapper hidden">
+            <div class="practical-info">
+              <h3>Practical info</h3>
+              <h4>Hours</h4>
+              <table>
+                <tr>
+                  <td>Monday</td>
+                  <td id="mon">-</td>
+                </tr>
+                <tr>
+                  <td>Tuesday</td>
+                  <td id="tue">-</td>
+                </tr>
+                <tr>
+                  <td>Wednesday</td>
+                  <td id="wed">-</td>
+                </tr>
+                <tr>
+                  <td>Thursday</td>
+                  <td id="thu">-</td>
+                </tr>
+                <tr>
+                  <td>Friday</td>
+                  <td id="fri">-</td>
+                </tr>
+                <tr>
+                  <td>Saturday</td>
+                  <td id="sat">-</td>
+                </tr>
+                <tr>
+                  <td>Sunday</td>
+                  <td id="sun">-</td>
+                </tr>
+              </table>
+              <p id="comment">-</p>
+              <br>
+              <h4>Address</h4>
+              <table>
+                <tr>
+                  <td id="street">-</td>
+                </tr>
+                <tr>
+                  <td id="postal">-</td>
+                </tr>
+                <tr>
+                  <td id="city">-</td>
+                </tr>
+              </table>
+            </div>
+            <a href="#" target="_blank" id="getDirection"><div id="minimap" class="minimap">
+            </div></a>
           </div>
-          <div style="float: right; width: 90%;">
-            <p>Dining Out</p>
-            <p>Exploring the City</p>
-            <p>Relaxed Outdoor Activities</p>
-            <p>Amusement</p>
-            <p>Learning / Sightseeing</p>
-            <p>Active</p>
+          <div id="categories-wrapper">
+            <div style="float: right; width: 10%;">
+              <div class="cat-colour"></div>
+              <div class="cat-colour"></div>
+              <div class="cat-colour"></div>
+              <div class="cat-colour"></div>
+              <div class="cat-colour"></div>
+              <div class="cat-colour"></div>
+            </div>
+            <div style="float: right; width: 90%; text-align: right;">
+              <p>Dining Out</p>
+              <p>Exploring the City</p>
+              <p>Relaxed Outdoor Activities</p>
+              <p>Amusement</p>
+              <p>Learning / Sightseeing</p>
+              <p>Active</p>
+            </div>
           </div>
         </div>
       </div>
