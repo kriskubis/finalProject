@@ -71,6 +71,8 @@ function addNewActivity() {
       street: document.querySelector('#street').value,
       city : document.querySelector('#city').value,
       postal : document.querySelector('#postal').value,
+      lat : document.querySelector('#lat').value,
+      lng : document.querySelector('#lng').value,
       why : document.querySelector('#why').value,
       cant : document.querySelector('#cant').value,
       good : document.querySelector('#good').value,
@@ -135,6 +137,8 @@ function appendFields(acts) {
     document.getElementById('new-street').value = '${act.data().street}';
     document.getElementById('new-postal').value = '${act.data().postal}';
     document.getElementById('new-city').value = '${act.data().city}';
+    document.getElementById('new-lat').value = '${act.data().lat}';
+    document.getElementById('new-lng').value = '${act.data().lng}';
 
     document.getElementById('new-monO').value = '${act.data().monO}';
     document.getElementById('new-tueO').value = '${act.data().tueO}';
@@ -210,6 +214,8 @@ function editActivity() {
   let newComment = document.querySelector('#new-comment').value;
   let newStreet = document.querySelector('#new-street').value;
   let newPostal = document.querySelector('#new-postal').value;
+  let newLat = document.querySelector('#new-lat').value;
+  let newLng = document.querySelector('#new-lng').value;
   let newCity = document.querySelector('#new-city').value;
   let newScore = catScore;
   let newImg = "placeholder.jpg";
@@ -250,6 +256,8 @@ function editActivity() {
       street: newStreet,
       postal: newPostal,
       city: newCity,
+      lat: newLat,
+      lng: newLng,
       score: newScore,
       img: newImg
     };
