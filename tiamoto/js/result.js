@@ -22,7 +22,7 @@ var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/maieven/ck9lcgut327y51inypjxttjkr', // stylesheet location
     center: [10.500,56.380], // starting position [lng, lat]
-    zoom: 9 // starting zoom
+    zoom: 9, // starting zoom
 });
 
 // Expand map
@@ -36,7 +36,7 @@ $(function() {
 // Refresh map or it won't fill the div on expand
 $(function(){
   $("#expand-map").click(function() {
-    var map = new mapboxgl.Map({
+  var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/maieven/ck9lcgut327y51inypjxttjkr',
       center: [10.500,56.380],
@@ -127,6 +127,17 @@ function appendActivities(acts) {
       } else {
         var openClosed = 'Closed';
       }
+    
+      //----------------------- MINI MAPS -----------------------//
+      var latitude = act.data().lat;
+      var longitude = act.data().lng;
+
+      var minimap = new mapboxgl.Map({
+        container: 'minimap',
+        style: 'mapbox://styles/maieven/ck9lcgut327y51inypjxttjkr',
+        center: {lat: latitude, lng: longitude},
+        zoom: 15
+      });
     
     //----------------------- HTML TEMPLATES -----------------------//
     // If statement will filter by the search saved in local storage (see in console)
