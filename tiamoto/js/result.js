@@ -45,6 +45,7 @@ $(function(){
   });
 })
 
+
 //----------------------- ADD ACTIVITIES TO DOM -----------------------//
 actRef.orderBy("score","desc").onSnapshot(function(snapshotData) {
   // Add .limit(10) after actRef.orderBy("score","desc") to limit entries.
@@ -70,6 +71,64 @@ function appendActivities(acts) {
       var category = act.data().cat;
       var catArray = category.split();
 
+      // Use address to get direction from Google
+      var street = act.data().street;
+      var streetSep = street.split(' ').join('+'); // Swap spaces with plus sign
+      var direction = 'www.google.com/maps/dir//' + streetSep + ',' + act.data().postal + ',' + act.data().city;
+
+      //----------------------- HOURS - OPEN / CLOSED -----------------------//
+      currentDate = new Date()
+      weekday = currentDate.toString().substring(0,3).toLowerCase() // mon, tue, wed ...
+
+      if (weekday = mon) {
+        var startTime = act.data().monO + ':00';
+        var endTime = act.data().monC + ':00';
+
+      } else if (weekday = tue) {
+        var startTime = act.data().tueO + ':00';
+        var endTime = act.data().tueC + ':00';
+
+      } else if (weekday = wed) {
+        var startTime = act.data().wedO + ':00';
+        var endTime = act.data().wedC + ':00';
+
+      } else if (weekday = thu) {
+        var startTime = act.data().tueO + ':00';
+        var endTime = act.data().tueC + ':00';
+
+      } else if (weekday = fri) {
+        var startTime = act.data().friO + ':00';
+        var endTime = act.data().friC + ':00';
+
+      } else if (weekday = sat) {
+        var startTime = act.data().satO + ':00';
+        var endTime = act.data().satC + ':00';
+        
+      } else if (weekday = sun) {
+        var startTime = act.data().sunO + ':00';
+        var endTime = act.data().sunC + ':00';
+
+      }
+
+      startDate = new Date(currentDate.getTime());
+      startDate.setHours(startTime.split(":")[0]);
+      startDate.setMinutes(startTime.split(":")[1]);
+      startDate.setSeconds(startTime.split(":")[2]);
+
+      endDate = new Date(currentDate.getTime());
+      endDate.setHours(endTime.split(":")[0]);
+      endDate.setMinutes(endTime.split(":")[1]);
+      endDate.setSeconds(endTime.split(":")[2]);
+
+      isOpen = startDate < currentDate && endDate > currentDate
+
+      if (isOpen == true) {
+        var openClosed = 'Open';
+      } else {
+        var openClosed = 'Closed';
+      }
+    
+    //----------------------- HTML TEMPLATES -----------------------//
     // If statement will filter by the search saved in local storage (see in console)
     if ((whoAre == 'challenged') && (act.data().friendly == 'yes') && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= budgetLength)) {
       console.log('"' + act.data().title + '" is applicable for this search.')
@@ -77,17 +136,33 @@ function appendActivities(acts) {
       htmlTemplate += `
       <article class="activityCard" onClick="document.getElementById('return').innerHTML = '<h4>Go back</h4>'; 
         document.getElementById('activityGrid').classList.add('hidden');
-        document.getElementById('result-lead').classList.add('hidden'); 
-        document.getElementById('first-column').style.width = '70%';
-        document.getElementById('first-column').style.margin = '0';
+        document.getElementById('result-lead').classList.add('hidden');
+        document.getElementById('first-column').classList.add('first-column-act');
         document.getElementById('return-div').style.width = '100%';
-        document.getElementById('second-column').innerHTML = '(Practical info will be here)';
+        document.getElementById('expand-map').classList.add('hidden');
+        document.getElementById('map').classList.add('hidden');
+        document.getElementById('banner').style.backgroundImage = 'url(uploads/${act.data().img})';
+        document.getElementById('info-wrapper').classList.remove('hidden');
+        document.getElementById('categories-wrapper').classList.add('hidden');
+        document.getElementById('mon').innerHTML = '${act.data().monO} - ${act.data().monC}';
+        document.getElementById('tue').innerHTML = '${act.data().tueO} - ${act.data().tueC}';
+        document.getElementById('wed').innerHTML = '${act.data().wedO} - ${act.data().wedC}';
+        document.getElementById('thu').innerHTML = '${act.data().thuO} - ${act.data().thuC}';
+        document.getElementById('fri').innerHTML = '${act.data().friO} - ${act.data().friC}';
+        document.getElementById('sat').innerHTML = '${act.data().satO} - ${act.data().satC}';
+        document.getElementById('sun').innerHTML = '${act.data().sunO} - ${act.data().sunC}';
+        document.getElementById('getDirection').href = 'https:${direction}';
+        document.getElementById('comment').innerHTML = '${act.data().comment}';
+        document.getElementById('street').innerHTML = '${act.data().street}';
+        document.getElementById('postal').innerHTML = '${act.data().postal}';
+        document.getElementById('city').innerHTML = '${act.data().city}';
         document.getElementById('page-title').innerHTML = '${act.data().title}';
+        document.getElementById('dist-price').innerHTML = 'Distance: ${act.data().dist}<br>Price: ${act.data().price}';
         document.getElementById('page-info').innerHTML = '<div><p>${act.data().intro}</p><br><h5>Ideal for</h5><p>${act.data().ideal}</p><br><h5>Why we like it</h5><p>${act.data().why}</p><br></div><div><h5>Do not miss</h5><p>${act.data().cant}</p><br><h5>Good to know</h5><p>${act.data().good}</p></div>';" 
         style="background-image: url('uploads/${act.data().img}');">
         <div class="card-head">
           <h4>${act.data().title}</h4>
-          <h5>Open<br>${act.data().dist} km</h5>
+          <h5>${openClosed}<br>${act.data().dist} km</h5>
         </div>
         <div class="card-description">
           <h6>${act.data().title}</h6>
@@ -96,7 +171,7 @@ function appendActivities(acts) {
         <div class="${act.data().cat}-bg card-btn">
         <img src="media/plus.svg" alt="read more" style="width: 80%; padding: 10%; color: black;">
         </div>
-      </article>        
+      </article>    
       `;
     } else if ((act.data().aud == whoAre) && (catArray.some(r=> interests.indexOf(r) >=0)) && (distNumber <= howFar) && (priceLength <= budgetLength)) {
       console.log('"' + act.data().title + '" is applicable for this search.')
@@ -104,17 +179,33 @@ function appendActivities(acts) {
       htmlTemplate += `
       <article class="activityCard" onClick="document.getElementById('return').innerHTML = '<h4>Go back</h4>'; 
         document.getElementById('activityGrid').classList.add('hidden');
-        document.getElementById('result-lead').classList.add('hidden'); 
-        document.getElementById('first-column').style.width = '70%';
-        document.getElementById('first-column').style.margin = '0';
+        document.getElementById('result-lead').classList.add('hidden');
+        document.getElementById('first-column').classList.add('first-column-act');
         document.getElementById('return-div').style.width = '100%';
-        document.getElementById('second-column').innerHTML = '(Practical info will be here)';
+        document.getElementById('expand-map').classList.add('hidden');
+        document.getElementById('map').classList.add('hidden');
+        document.getElementById('banner').style.backgroundImage = 'url(uploads/${act.data().img})';
+        document.getElementById('info-wrapper').classList.remove('hidden');
+        document.getElementById('categories-wrapper').classList.add('hidden');
+        document.getElementById('mon').innerHTML = '${act.data().monO} - ${act.data().monC}';
+        document.getElementById('tue').innerHTML = '${act.data().tueO} - ${act.data().tueC}';
+        document.getElementById('wed').innerHTML = '${act.data().wedO} - ${act.data().wedC}';
+        document.getElementById('thu').innerHTML = '${act.data().thuO} - ${act.data().thuC}';
+        document.getElementById('fri').innerHTML = '${act.data().friO} - ${act.data().friC}';
+        document.getElementById('sat').innerHTML = '${act.data().satO} - ${act.data().satC}';
+        document.getElementById('sun').innerHTML = '${act.data().sunO} - ${act.data().sunC}';
+        document.getElementById('getDirection').href = 'https:${direction}';
+        document.getElementById('comment').innerHTML = '${act.data().comment}';
+        document.getElementById('street').innerHTML = '${act.data().street}';
+        document.getElementById('postal').innerHTML = '${act.data().postal}';
+        document.getElementById('city').innerHTML = '${act.data().city}';
         document.getElementById('page-title').innerHTML = '${act.data().title}';
+        document.getElementById('dist-price').innerHTML = 'Distance: ${act.data().dist}<br>Price: ${act.data().price}';
         document.getElementById('page-info').innerHTML = '<div><p>${act.data().intro}</p><br><h5>Ideal for</h5><p>${act.data().ideal}</p><br><h5>Why we like it</h5><p>${act.data().why}</p><br></div><div><h5>Do not miss</h5><p>${act.data().cant}</p><br><h5>Good to know</h5><p>${act.data().good}</p></div>';" 
         style="background-image: url('uploads/${act.data().img}');">
         <div class="card-head">
           <h4>${act.data().title}</h4>
-          <h5>Open<br>${act.data().dist} km</h5>
+          <h5>${openClosed}<br>${act.data().dist} km</h5>
         </div>
         <div class="card-description">
           <h6>${act.data().title}</h6>
@@ -138,14 +229,17 @@ function returnBtn() {
   let cards = document.querySelector('#activityGrid')
 
   if (cards.classList.contains('hidden')) {
-    console.log("Return to activities");
-    document.getElementById('activityGrid').classList.remove('hidden');
-    document.getElementById('result-lead').classList.remove('hidden');
-    document.getElementById('first-column').style.width = '45%';
-    document.getElementById('first-column').style.margin = '0 25% 0 0';
     document.getElementById('page-title').innerHTML = 'Recommendations';
+    document.getElementById('dist-price').innerHTML = '';
     document.getElementById('page-info').innerHTML = '<p>We’ve listed our top picks based on your answers below.<br><br>Don’t like what you see? You can start over and choose new categories.</p>';
-    document.getElementById('second-column').innerHTML = '<div style="float: right; width: 10%;"><div class="cat-colour"></div><div class="cat-colour"></div><div class="cat-colour"></div><div class="cat-colour"></div><div class="cat-colour"></div><div class="cat-colour"></div></div><div style="float: right; width: 90%;"><p>Dining Out</p><p>Exploring the City</p><p>Relaxed Outdoor Activities</p><p>Amusement</p><p>Learning / Sightseeing</p><p>Active</p></div'; 
+    document.getElementById('return').innerHTML = '<h4>Try again</h4>'; 
+    document.getElementById('activityGrid').classList.remove('hidden');
+    document.getElementById('expand-map').classList.remove('hidden');
+    document.getElementById('map').classList.remove('hidden');
+    document.getElementById('result-lead').classList.remove('hidden');
+    document.getElementById('first-column').classList.remove('first-column-act');
+    document.getElementById('categories-wrapper').classList.remove('hidden');
+    document.getElementById('info-wrapper').classList.add('hidden');
   } else {
     window.location.pathname = 'tiamoto/index.html';
   }

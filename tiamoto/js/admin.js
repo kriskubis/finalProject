@@ -78,8 +78,8 @@ function addNewActivity() {
       monC : document.querySelector('#monC').value,
       tueO : document.querySelector('#tueO').value,
       tueC : document.querySelector('#tueC').value,
-      wenO : document.querySelector('#wenO').value,
-      wenC : document.querySelector('#wenC').value,
+      wedO : document.querySelector('#wedO').value,
+      wedC : document.querySelector('#wedC').value,
       thuO : document.querySelector('#thuO').value,
       thuC : document.querySelector('#thuC').value,
       friO : document.querySelector('#friO').value,
@@ -138,14 +138,14 @@ function appendFields(acts) {
 
     document.getElementById('new-monO').value = '${act.data().monO}';
     document.getElementById('new-tueO').value = '${act.data().tueO}';
-    document.getElementById('new-wenO').value = '${act.data().wenO}';
+    document.getElementById('new-wedO').value = '${act.data().wedO}';
     document.getElementById('new-thuO').value = '${act.data().thuO}';
     document.getElementById('new-friO').value = '${act.data().friO}';
     document.getElementById('new-satO').value = '${act.data().satO}';
     document.getElementById('new-sunO').value = '${act.data().sunO}';
     document.getElementById('new-monC').value = '${act.data().monC}';
     document.getElementById('new-tueC').value = '${act.data().tueC}';
-    document.getElementById('new-wenC').value = '${act.data().wenC}';
+    document.getElementById('new-wedC').value = '${act.data().wedC}';
     document.getElementById('new-thuC').value = '${act.data().thuC}';
     document.getElementById('new-friC').value = '${act.data().friC}';
     document.getElementById('new-satC').value = '${act.data().satC}';
@@ -197,8 +197,8 @@ function editActivity() {
   let newMonC = document.querySelector('#new-monC').value;
   let newTueO = document.querySelector('#new-tueO').value;
   let newTueC = document.querySelector('#new-tueC').value;
-  let newWenO = document.querySelector('#new-wenO').value;
-  let newWenC = document.querySelector('#new-wenC').value;
+  let newWedO = document.querySelector('#new-wedO').value;
+  let newWedC = document.querySelector('#new-wedC').value;
   let newThuO = document.querySelector('#new-thuO').value;
   let newThuC = document.querySelector('#new-thuC').value;
   let newFriO = document.querySelector('#new-friO').value;
@@ -208,6 +208,9 @@ function editActivity() {
   let newSunO = document.querySelector('#new-sunO').value;
   let newSunC = document.querySelector('#new-sunC').value;
   let newComment = document.querySelector('#new-comment').value;
+  let newStreet = document.querySelector('#new-street').value;
+  let newPostal = document.querySelector('#new-postal').value;
+  let newCity = document.querySelector('#new-city').value;
   let newScore = catScore;
   let newImg = "placeholder.jpg";
 
@@ -233,8 +236,8 @@ function editActivity() {
       monC: newMonC,
       tueO: newTueO,
       tueC: newTueC,
-      wenO: newWenO,
-      wenC: newWenC,
+      wedO: newWedO,
+      wedC: newWedC,
       thuO: newThuO,
       thuC: newThuC,
       friO: newFriO,
@@ -244,6 +247,9 @@ function editActivity() {
       sunO: newSunO,
       sunC: newSunC,
       comment: newComment,
+      street: newStreet,
+      postal: newPostal,
+      city: newCity,
       score: newScore,
       img: newImg
     };
