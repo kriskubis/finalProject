@@ -25,6 +25,13 @@ var map = new mapboxgl.Map({
     zoom: 9 // starting zoom
 });
 
+var minimap = new mapboxgl.Map({
+  container: 'minimap', // container id
+  style: 'mapbox://styles/maieven/ck9lcgut327y51inypjxttjkr', // stylesheet location
+  center: [10.500,56.380], // starting position [lng, lat]
+  zoom: 9 // starting zoom
+});
+
 // Expand map
 $(function() {
   $("#expand-map").click(function() {
@@ -36,7 +43,7 @@ $(function() {
 // Refresh map or it won't fill the div on expand
 $(function(){
   $("#expand-map").click(function() {
-    var map = new mapboxgl.Map({
+  var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/maieven/ck9lcgut327y51inypjxttjkr',
       center: [10.500,56.380],
