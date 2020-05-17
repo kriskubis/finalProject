@@ -171,6 +171,7 @@ function appendActivities(acts) {
           zoom: 14,
           interactive: false
         });
+        window.scrollTo(0, 0);
         document.getElementById('return').innerHTML = '<h4>Go back</h4>'; 
         document.getElementById('activityGrid').classList.add('hidden');
         document.getElementById('result-lead').classList.add('hidden');
@@ -231,6 +232,7 @@ function appendActivities(acts) {
           zoom: 14,
           interactive: false
         });
+        window.scrollTo(0, 0);
         document.getElementById('return').innerHTML = '<h4>Go back</h4>'; 
         document.getElementById('activityGrid').classList.add('hidden');
         document.getElementById('result-lead').classList.add('hidden');

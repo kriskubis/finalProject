@@ -81,6 +81,20 @@
     to {opacity:1 ;}
   }
 
+.page-info {
+    width: 100%;
+
+    .first-column {
+        width: 45%;
+        float: left;
+    }
+
+    .second-column {
+        width: 30%;
+        float: left;
+    }
+}
+
 #banner {
     background-position: center;
     background-size: cover;
@@ -372,3 +386,82 @@ p {
     left: 250px;
     @include shadow-slim
 }
+
+@include media(">phone", "<tablet") {
+    .map {
+        height: 200px;
+    }
+
+    #expand-map {
+        display: none;
+    }
+
+    .activityCard {
+        width: 350px;
+        height: 350px;
+        margin: 20px auto;
+        float: none;
+        
+        h4 {
+            font-size: 32px;
+            line-height: 36px;
+        }
+        h5 {
+            font-size: 26px;
+            line-height: 28px;
+        }
+        h6 {
+            font-size: 26px;
+        }
+    }
+
+    .card-head {
+        height: 150px;
+    }
+
+    .card-description {
+        height: 100px;
+    
+        p {
+            -webkit-line-clamp: 3;
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+
+    .card-btn {
+        height: 70px;
+        width: 70px;
+        border-radius: 50px;
+        position: relative;
+        top: -185px;
+        left: 250px;
+        @include shadow-slim
+    }
+
+    #categories-wrapper {
+        height: 0;
+        width: 0;
+
+        div {
+            height: 0;
+            width: 0;
+        }
+
+        p {
+            font-size: 0px;
+        }
+    }
+
+    #first-column {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+
+        p {
+            width: 100%;
+        }
+    }
+}
+
+@include media(">tablet") {}
