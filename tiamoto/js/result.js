@@ -302,6 +302,12 @@ function returnBtn() {
     document.getElementById('info-wrapper').classList.add('hidden');
     document.getElementById('mailBtn').classList.add('hidden');
     document.getElementById('webBtn').classList.add('hidden');
+    map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/maieven/ck9lcgut327y51inypjxttjkr',
+      center: [10.500,56.380],
+      zoom: 9
+    });
   } else {
     window.location.pathname = 'tiamoto/index.html';
   }
