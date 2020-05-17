@@ -92,7 +92,7 @@ function addNewActivity() {
       sunC : document.querySelector('#sunC').value,
       comment : document.querySelector('#comment').value,
       score : catScore,
-      img : "placeholder.jpg",
+      img : document.querySelector('#img').value,
       web : document.querySelector('#web').value
     };
   
@@ -218,7 +218,8 @@ function editActivity() {
   let newLng = document.querySelector('#new-lng').value;
   let newCity = document.querySelector('#new-city').value;
   let newScore = catScore;
-  let newImg = "placeholder.jpg";
+  let newImg = document.querySelector('#new-img').value;
+  let newWeb = document.querySelector('#new-web').value;
 
   // Fail message
   if (newTitle == "") {
@@ -259,7 +260,8 @@ function editActivity() {
       lat: newLat,
       lng: newLng,
       score: newScore,
-      img: newImg
+      img: newImg,
+      web: newWeb
     };
   
     // Delete old document by ID (title)
