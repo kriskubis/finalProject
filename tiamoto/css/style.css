@@ -3,12 +3,17 @@ html {
   padding: 0;
   color: #555555;
   font-family: "Spartan", sans-serif;
+  overflow-x: none;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 h1 {
   font-family: "Lora", serif;
   font-weight: 600;
   margin: 0 0 8px 0;
+  font-size: 68px;
+  line-height: 72px;
 }
 
 h2 {
@@ -16,6 +21,7 @@ h2 {
   font-weight: 600;
   margin: 0 0 8px 0;
   font-size: 68px;
+  line-height: 72px;
 }
 
 h3 {
@@ -23,6 +29,7 @@ h3 {
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 28px;
+  line-height: 32px;
 }
 
 h4 {
@@ -30,6 +37,7 @@ h4 {
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 22px;
+  line-height: 24px;
 }
 
 h5, label {
@@ -37,21 +45,23 @@ h5, label {
   font-weight: 700;
   margin: 0 0 8px 0;
   font-size: 22px;
+  line-height: 24px;
 }
 
 h6 {
   font-family: "Josefine Sans", sans-serif;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 22px;
   margin: 0 0 8px 0;
 }
 
 p {
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 22px;
   margin: 0 0 8px 0;
 }
 
-label {
+label, input {
   font-family: "Josefine Sans", sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -66,18 +76,6 @@ html, body {
 
 main {
   max-width: 100%;
-}
-
-.page-info {
-  width: 100%;
-}
-.page-info .first-column {
-  width: 45%;
-  float: left;
-}
-.page-info .second-column {
-  width: 30%;
-  float: left;
 }
 
 .btn {
@@ -118,6 +116,19 @@ main {
   display: none;
 }
 
+@media (min-width: 321px) and (max-width: 767px) {
+  h1, h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
 #admin-nav {
   text-align: center;
   width: 100%;
@@ -259,35 +270,73 @@ main {
   background-repeat: no-repeat;
 }
 
+.introduction {
+  width: 800px;
+  padding-right: 45px;
+}
+
 .filter-section {
   height: 100%;
   padding-top: 90px;
 }
 
 .question {
-  min-height: 60vh;
-  display: flex;
-  align-content: space-around;
-  margin-bottom: 180px;
-}
-.question div:nth-of-type(1) {
-  width: 48%;
-  float: left;
-}
-.question div:nth-of-type(1) p {
-  max-width: 85%;
-}
-.question div:nth-of-type(2) {
-  width: 48%;
-  float: left;
-  height: 100%;
-  align-self: flex-end;
-  text-align: center;
+  margin-bottom: 60px;
 }
 .question video {
+  padding-top: 60px;
   width: 100%;
 }
 
+@media (min-width: 321px) and (max-width: 767px) {
+  #weather {
+    height: 200px;
+  }
+
+  #review-sign {
+    display: none;
+  }
+
+  #house {
+    width: 100%;
+    left: 0;
+    height: 100px;
+    top: -99px;
+    background-position: center;
+  }
+
+  .question div {
+    display: block;
+    width: 100%;
+    float: none;
+  }
+}
+@media (min-width: 769px) {
+  .question {
+    min-height: 60vh;
+    display: flex;
+    align-content: space-around;
+    margin-bottom: 180px;
+  }
+  .question div:nth-of-type(1) {
+    width: 48%;
+    float: left;
+  }
+  .question div:nth-of-type(1) p {
+    max-width: 85%;
+  }
+  .question div:nth-of-type(2) {
+    width: 48%;
+    float: left;
+    height: 100%;
+    align-self: flex-end;
+    text-align: center;
+  }
+  .question video {
+    padding: 0;
+    width: 100%;
+  }
+}
 /* The Modal (background) */
 .modal {
   display: none;
@@ -365,6 +414,18 @@ main {
     opacity: 1;
   }
 }
+.page-info {
+  width: 100%;
+}
+.page-info .first-column {
+  width: 45%;
+  float: left;
+}
+.page-info .second-column {
+  width: 30%;
+  float: left;
+}
+
 #banner {
   background-position: center;
   background-size: cover;
@@ -646,6 +707,80 @@ p {
   -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 321px) and (max-width: 767px) {
+  .map {
+    height: 200px;
+  }
+
+  #expand-map {
+    display: none;
+  }
+
+  .activityCard {
+    width: 350px;
+    height: 350px;
+    margin: 20px auto;
+    float: none;
+  }
+  .activityCard h4 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .activityCard h5 {
+    font-size: 26px;
+    line-height: 28px;
+  }
+  .activityCard h6 {
+    font-size: 26px;
+  }
+
+  .card-head {
+    height: 150px;
+  }
+
+  .card-description {
+    height: 100px;
+  }
+  .card-description p {
+    -webkit-line-clamp: 3;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .card-btn {
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    position: relative;
+    top: -185px;
+    left: 250px;
+    -webkit-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  #categories-wrapper {
+    height: 0;
+    width: 0;
+  }
+  #categories-wrapper div {
+    height: 0;
+    width: 0;
+  }
+  #categories-wrapper p {
+    font-size: 0px;
+  }
+
+  #first-column {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  #first-column p {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

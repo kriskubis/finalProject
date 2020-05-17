@@ -47,35 +47,80 @@
     background-repeat: no-repeat;
 }
 
+.introduction {
+    width: 800px;
+    padding-right: 45px;
+}
+
 .filter-section {
     height: 100%;
     padding-top: 90px;
 }
 
 .question {
-    min-height: 60vh;
-    display: flex;
-    align-content: space-around;
-    margin-bottom: 180px;
+    margin-bottom: 60px;
 
-    div:nth-of-type(1) {
-        width: 48%;
-        float: left;
+    video {
+        padding-top: 60px;
+        width: 100%;
+    }
+}
 
-        p {
-            max-width: 85%;
+@include media(">phone", "<tablet") {
+    #weather {
+        height: 200px;
+    }
+
+    #review-sign {
+        display: none;
+    }
+
+    #house {
+        width: 100%;
+        left: 0;
+        height: 100px;
+        top: -99px;
+        background-position: center;
+    }
+
+    .question {
+         div {
+            display: block;
+            width: 100%;
+            float: none;
         }
     }
 
-    div:nth-of-type(2) {
-        width: 48%;
-        float: left;
-        height: 100%;
-        align-self: flex-end;
-        text-align: center;
+}
+
+@include media(">tablet") {
+    .question {
+        min-height: 60vh;
+        display: flex;
+        align-content: space-around;
+        margin-bottom: 180px;
+    
+        div:nth-of-type(1) {
+            width: 48%;
+            float: left;
+    
+            p {
+                max-width: 85%;
+            }
+        }
+    
+        div:nth-of-type(2) {
+            width: 48%;
+            float: left;
+            height: 100%;
+            align-self: flex-end;
+            text-align: center;
+        }
+    
+        video {
+            padding: 0;
+            width: 100%;
+        }
     }
 
-    video {
-        width: 100%;
-    }
 }
