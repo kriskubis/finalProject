@@ -3,7 +3,6 @@ html {
   padding: 0;
   color: #555555;
   font-family: "Spartan", sans-serif;
-  overflow-x: none;
   font-size: 18px;
   line-height: 22px;
 }
@@ -711,9 +710,9 @@ p {
   height: 220px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 25px 25px 0px 0px;
-  border-right: inset 2px solid #cccccc;
-  border-top: inset 2px solid #cccccc;
-  border-left: inset 2px solid #cccccc;
+  border-right: 2px solid #cccccc;
+  border-top: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
   padding: 25px;
   color: #ffffff;
 }
@@ -722,9 +721,9 @@ p {
   height: 150px;
   background-color: #fafafa;
   border-radius: 0px 0px 25px 25px;
-  border-right: inset 2px solid #cccccc;
-  border-bottom: inset 2px solid #cccccc;
-  border-left: inset 2px solid #cccccc;
+  border-right: 2px solid #cccccc;
+  border-bottom: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
   padding: 25px;
   color: #555555;
 }
