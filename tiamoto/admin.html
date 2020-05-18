@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="dk">
+<html lang="da-DK">
 
 <head>
   <meta charset="utf-8">
@@ -26,8 +26,6 @@
 
   <main>
 
-    <!---------------------- ADD NEW ACTIVITY SECTION ---------------------->
-
     <section id="add" class="admin-section">
       <form id="add-form">
 
@@ -37,13 +35,13 @@
               <label for="title">Activity title:</label><br>
               <input id="title" type="text" name="title" value="Some title"><br>
               <br>
-              <label for="aud">Audience:</label><br>
+              <label>Audience:</label><br>
               <input type="radio" name="aud" value="couple"> Couple <br>
               <input type="radio" name="aud" value="group"> Group <br>
               <input type="radio" name="aud" value="family"> Family <br>
               <input type="radio" name="aud" value="challenged"> Challenged <br>
               <br>
-              <label for="cat">Category:</label><br>
+              <label>Category:</label><br>
               <input type="radio" name="cat" value="dining"> Dining Out <br>
               <input type="radio" name="cat" value="city"> Exploring the City <br>
               <input type="radio" name="cat" value="outdoor"> Relaxed Outdoor Activities <br>
@@ -52,19 +50,19 @@
               <input type="radio" name="cat" value="active"> Active <br>
             </div>
             <div class="column">
-              <label for="price">Price class:</label><br>
+              <label>Price class:</label><br>
               <input type="radio" name="price" value="$"> $ <br>
               <input type="radio" name="price" value="$$"> $$ <br>
               <input type="radio" name="price" value="$$$"> $$$ <br>
               <br>
-              <label for="indoors">Indoors / Outdoors:</label><br>
+              <label>Indoors / Outdoors:</label><br>
               <input type="radio" name="indoors" value="indoors"> Indoors <br>
               <input type="radio" name="indoors" value="outdoors"> Outdoors <br>
               <br>
-              <label for="dist">Distance from vacation house:</label><br>
+              <label>Distance from vacation house:</label><br>
               <input id="dist" type="text" name="dist"  value="7"> Km<br>
               <br>
-              <label for="friendly">Handicap / baby friendly:</label><br>
+              <label>Handicap / baby friendly:</label><br>
               <input type="radio" name="friendly" value="yes"> yes <br>
               <input type="radio" name="friendly" value="no"> no <br>
           </div>
@@ -130,7 +128,7 @@
               <br>
               <div class="hoursRow"><div class="hoursColumn"><h6>Sunday</h6></div><div class="hoursColumn"><label for="sunO">From:</label></div><div class="hoursColumn"><input id="sunO" type="text" name="sunO" size="8" maxlength="6" value="08:00"></div><div class="hoursColumn"><label for="sunC">To:</label></div><div class="hoursColumn"><input id="sunC" type="text" name="sunC" size="8" maxlength="6" value="17:00"></div></div><br>
               <br>
-              <label for="hoursComment">Comment to hours:</label><br>
+              <label for="comment">Comment to hours:</label><br>
               <input id="comment" type="text" name="comment" value="Only open May to September."><br>
           </div>
           </fieldset>
@@ -155,18 +153,16 @@
         </form>
     </section>
 
-    <!---------------------- EDIT ACTIVITY SECTION ---------------------->
-
     <section id="edit" class="admin-section hidden">
       <form method="post" enctype="multipart/form-data">
         <fieldset>
           <legend><h4>Main information</h4></legend>
           <div class="column">
             <label for="title">Choose an activity to edit or delete:</label><br>
-            <div id="edit-activity"> <!-- --> </div>
+            <div id="edit-activity"></div>
             <br>
             <input id="id" type="text" name="id" value="">
-            <button type="button" onclick="deleteActivity()" class="delete-btn" style="float: left; width: 100%;"><p id="delete-text">Delete</p></button>
+            <button type="button" onclick="deleteActivity()" class="delete-btn" style="float: left; width: 100%;"><span id="delete-text">Delete</span></button>
           </div>
           <div class="column">
             <label for="new-title">New title:</label><br>
@@ -260,7 +256,7 @@
             <br>
             <div class="hoursRow"><div class="hoursColumn"><h6>Sunday</h6></div><div class="hoursColumn"><label for="new-sunO">From:</label></div><div class="hoursColumn"><input id="new-sunO" type="text" name="new-sunO" size="8" maxlength="6" value=""></div><div class="hoursColumn"><label for="new-sunC">To:</label></div><div class="hoursColumn"><input id="new-sunC" type="text" name="new-sunC" size="8" maxlength="6" value=""></div></div><br>
             <br>
-            <label for="hoursComment">Comment to hours:</label><br>
+            <label for="new-comment">Comment to hours:</label><br>
             <input id="new-comment" type="text" name="new-comment" value=""><br>
         </div>
         </fieldset>
@@ -288,8 +284,6 @@
       </form>
     </section>
 
-    <!---------------------- UPLOAD IMAGE SECTION ---------------------->
-
     <section id="imgUpload" class="admin-section hidden">
       <form action="php/img_upload.php" method="post" enctype="multipart/form-data">
         <fieldset>
@@ -303,13 +297,10 @@
           <input type="submit" class="btn" value="Upload image" name="submit">
         </div>
       </form>
-    </div>
     </section>
 
 </main>
 
-
-  <!-- main js file -->
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
   <script src="js/main.js"></script>

@@ -61,6 +61,34 @@ p {
   margin: 0 0 8px 0;
 }
 
+button > span {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+a > span {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.modal-headline {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-size: 42px;
+  line-height: 46px;
+}
+
 label, input {
   font-family: "Josefine Sans", sans-serif;
   font-size: 18px;
@@ -118,15 +146,21 @@ main {
 
 @media (min-width: 321px) and (max-width: 767px) {
   h1, h2 {
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 34px;
+    padding-bottom: 8px;
   }
 
   h3 {
+    font-size: 24px;
+  }
+
+  h4 {
     font-size: 18px;
   }
 
-  p {
-    font-size: 14px;
+  html, p {
+    font-size: 18px;
   }
 }
 #admin-nav {
@@ -305,10 +339,17 @@ main {
     background-position: center;
   }
 
+  .introduction p {
+    font-size: 18px;
+  }
+
   .question div {
     display: block;
     width: 100%;
     float: none;
+  }
+  .question p {
+    font-size: 18px;
   }
 }
 @media (min-width: 769px) {
@@ -453,7 +494,7 @@ main {
   margin-left: 25px;
 }
 
-#goToWebsite {
+#webBtn {
   background-color: #8e97b5;
   margin-left: 25px;
 }

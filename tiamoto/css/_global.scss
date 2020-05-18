@@ -80,6 +80,34 @@ p {
     margin: 0 0 8px 0;
 }
 
+button > span {
+    font-family: $font-headline;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    line-height: 24px;
+}
+
+a > span {
+    font-family: $font-headline;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    line-height: 24px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.modal-headline {
+    font-family: $font-title;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    font-size: 42px;
+    line-height: 46px;
+}
+
 label, input {
     font-family: $font-headline;
     font-size: 18px;
@@ -139,15 +167,21 @@ $breakpoints: (phone: 640px,
 
 @include media(">phone", "<tablet") {
     h1, h2 {
-        font-size: 28px;
+        font-size: 32px;
+        line-height: 34px;
+        padding-bottom: 8px;
     }
 
     h3 {
+        font-size: 24px;
+    }
+
+    h4 {
         font-size: 18px;
     }
 
-    p {
-        font-size: 14px;
+    html, p {
+        font-size: 18px;
     }
 }
 

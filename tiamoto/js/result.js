@@ -43,7 +43,7 @@ $(function(){
       zoom: 9
     });
   });
-})
+});
 
 //----------------------- SEND TO MAIL -----------------------//
 // Get the modal
@@ -58,19 +58,19 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
-}
+};
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
 //----------------------- ADD ACTIVITIES TO DOM -----------------------//
 actRef.orderBy("score","desc").onSnapshot(function(snapshotData) {
@@ -103,36 +103,39 @@ function appendActivities(acts) {
       var direction = 'www.google.com/maps/dir//' + streetSep + ',' + act.data().postal + ',' + act.data().city;
 
       //----------------------- HOURS - OPEN / CLOSED -----------------------//
-      currentDate = new Date()
-      weekday = currentDate.toString().substring(0,3).toLowerCase() // mon, tue, wed ...
-
+      currentDate = new Date();
+      weekday = currentDate.toString().substring(0,3).toLowerCase(); // mon, tue, wed ...
+      
+      var startTime = '00:00:00';
+      var endTime = '00:00:00';
+    
       if (weekday == 'mon') {
-        var startTime = act.data().monO + ':00';
-        var endTime = act.data().monC + ':00';
+        startTime = act.data().monO + ':00';
+        endTime = act.data().monC + ':00';
 
       } else if (weekday == 'tue') {
-        var startTime = act.data().tueO + ':00';
-        var endTime = act.data().tueC + ':00';
+        startTime = act.data().tueO + ':00';
+        endTime = act.data().tueC + ':00';
 
       } else if (weekday == 'wed') {
-        var startTime = act.data().wedO + ':00';
-        var endTime = act.data().wedC + ':00';
+        startTime = act.data().wedO + ':00';
+        endTime = act.data().wedC + ':00';
 
       } else if (weekday == 'thu') {
-        var startTime = act.data().tueO + ':00';
-        var endTime = act.data().tueC + ':00';
+        startTime = act.data().tueO + ':00';
+        endTime = act.data().tueC + ':00';
 
       } else if (weekday == 'fri') {
-        var startTime = act.data().friO + ':00';
-        var endTime = act.data().friC + ':00';
+        startTime = act.data().friO + ':00';
+        endTime = act.data().friC + ':00';
 
       } else if (weekday == 'sat') {
-        var startTime = act.data().satO + ':00';
-        var endTime = act.data().satC + ':00';
+        startTime = act.data().satO + ':00';
+        endTime = act.data().satC + ':00';
         
       } else if (weekday == 'sun') {
-        var startTime = act.data().sunO + ':00';
-        var endTime = act.data().sunC + ':00';
+        startTime = act.data().sunO + ':00';
+        endTime = act.data().sunC + ':00';
 
       }
 
@@ -147,11 +150,13 @@ function appendActivities(acts) {
       endDate.setSeconds(endTime.split(":")[2]);
 
       isOpen = startDate < currentDate && endDate > currentDate
-
-      if (isOpen == true) {
-        var openClosed = 'Open';
+      
+      var openClosed = '';
+      
+      if (isOpen === true) {
+        openClosed = 'Open';
       } else {
-        var openClosed = 'Closed';
+        openClosed = 'Closed';
       }
 
     //----------------------- HTML TEMPLATES -----------------------//
@@ -181,6 +186,7 @@ function appendActivities(acts) {
         document.getElementById('map').classList.add('hidden');
         document.getElementById('banner').style.backgroundImage = 'url(uploads/${act.data().img})';
         document.getElementById('mailBtn').classList.remove('hidden');
+        document.getElementById('dist-price').classList.remove('hidden');
         document.getElementById('sendMail').href = 'mailto:${usermail}?subject=${act.data().title}&body=${act.data().street}%0D%0A${act.data().postal}%0D%0A${act.data().city}';
         document.getElementById('webBtn').classList.remove('hidden');
         document.getElementById('webBtn').href = '${act.data().web}';
@@ -242,6 +248,7 @@ function appendActivities(acts) {
         document.getElementById('map').classList.add('hidden');
         document.getElementById('banner').style.backgroundImage = 'url(uploads/${act.data().img})';
         document.getElementById('mailBtn').classList.remove('hidden');
+        document.getElementById('dist-price').classList.remove('hidden');
         document.getElementById('sendMail').href = 'mailto:${usermail}?subject=${act.data().title}&body=${act.data().street}%0D%0A${act.data().postal}%0D%0A${act.data().city}';
         document.getElementById('webBtn').classList.remove('hidden');
         document.getElementById('webBtn').href = '${act.data().web}';
@@ -294,6 +301,7 @@ function returnBtn() {
     document.getElementById('page-title').innerHTML = 'Recommendations';
     document.getElementById('dist-price').innerHTML = '';
     document.getElementById('page-info').innerHTML = '<p>We’ve listed our top picks based on your answers below.<br><br>Don’t like what you see? You can start over and choose new categories.</p>';
+    document.getElementById('dist-price').classList.add('hidden');
     document.getElementById('return').innerHTML = '<h4>Try again</h4>'; 
     document.getElementById('activityGrid').classList.remove('hidden');
     document.getElementById('expand-map').classList.remove('hidden');
@@ -311,7 +319,7 @@ function returnBtn() {
       zoom: 9
     });
   } else {
-    window.location.pathname = 'tiamoto/index.html';
+    window.location.pathname = '/index.html';
   }
 }
 

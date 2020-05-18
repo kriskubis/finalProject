@@ -1,7 +1,6 @@
 const doc = document;
 
 //----------------------- FIREBASE -----------------------//
-// Your web app's Firebase configuration
 var firebaseConfig = {
     apiKey: "AIzaSyBaXpDbJvr5P4cyveLlC5SODF_b57LQmcc",
     authDomain: "finalproject-c1daa.firebaseapp.com",
@@ -20,16 +19,16 @@ var firebaseConfig = {
 
 //----------------------- FILTER -----------------------//
 $("input[type=checkbox]").on("change", function(){
-  var arr = []
+  var arr = [];
   $(":checkbox").each(function(){
      if($(this).is(":checked")){
-       arr.push($(this).val())
+       arr.push($(this).val());
      }
-  })
+  });
   
   // Save interest filter to local storage
   localStorage.setItem('q2', arr);
-})
+});
 
 function filter() {
     // Save remaining filters to local storage

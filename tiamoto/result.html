@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="dk">
+<html lang="da-DK">
 
 <head>
   <meta charset="utf-8">
@@ -27,12 +27,12 @@
         <br>
         <h4>Send this information to your e-mail</h4>
         <br>
-        <label for="usermail"><h2>Please enter your E-mail address</h2></label><br>
+        <label for="usermail" class="modal-headline">Please enter your E-mail address</label><br>
         <br>
         <input id="usermail" type="text" name="usermail" placeholder="Type here (Required)"><br>
         <br>
         <br>
-        <a href="#" id="sendMail"><button class="btn-slim"><h4>Send</h4></button></a>
+        <a href="#" id="sendMail" class="btn-slim"><h4>Send</h4></a>
         <div class="modal-decor">
           <img id="caprifolium" src="media/caprifolium.svg" alt="caprifolium">
         </div>
@@ -45,18 +45,16 @@
       </div>
     </div>
     <div  id="expand-map">
-      <button><img class="expand" src="media/expand.svg" style="width: 80%;"></button>
+      <button><img class="expand" src="media/expand.svg" style="width: 80%;" alt="expand"></button>
     </div>
     <div class="result">
       <div class="page-info">
         <div class="first-column" id="first-column">
           <h3 id="result-lead">Here is your personalised</h3>
           <h2 id="page-title">Recommendations</h2>
-          <h3 id="dist-price"></h3>
-          <section id="page-info">
-            <p>We’ve listed our top picks based on your answers below.<br><br>
+          <h3 id="dist-price" class="hidden">-</h3>
+          <p  id="page-info">We’ve listed our top picks based on your answers below.<br><br>
               Don’t like what you see? You can start over and choose new categories.</p>
-            </section>
           <br><br>
           <div id="return-div">
             <button id="return" class="btn-slim" onClick="returnFront()"><h4>Try again</h4></button>
@@ -137,7 +135,7 @@
           </div>
         </div>
       </div>
-      <section id="activityGrid"></section>
+      <div id="activityGrid"></div>
     </div>
   </main>
 
