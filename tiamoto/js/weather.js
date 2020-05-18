@@ -20,9 +20,13 @@ document.addEventListener("DOMContentLoaded", function() {
       } else if (weather == "Partly Cloudy") {
         document.getElementById('weather').style.backgroundImage = "url('media/partly-cloudy.jpeg')";
       } else if (weather == "Overcast") {
-        document.getElementById('weather').style.backgroundImage = "url('media/cloudy.jpeg')";
+        document.getElementById('weather').style.backgroundImage = "url('media/overcast.jpeg')";
       } else if (weather == "Light Drizzle") {
-        document.getElementById('weather').style.backgroundImage = "url('media/cloudy.jpeg')";
+        document.getElementById('weather').style.backgroundImage = "url('media/light-drizzle.jpeg')";
+      } else if (weather == "Light Rain Shower") {
+        document.getElementById('weather').style.backgroundImage = "url('media/light-drizzle.jpeg')";
+      } else if (weather == "Rain") {
+        document.getElementById('weather').style.backgroundImage = "url('media/overcast.jpeg')";
       } else {
         document.getElementById('weather').style.backgroundImage = "url('media/partly-cloudy.jpeg')";
       }
