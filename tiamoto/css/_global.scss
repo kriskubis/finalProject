@@ -139,15 +139,21 @@ $breakpoints: (phone: 640px,
 
 @include media(">phone", "<tablet") {
     h1, h2 {
-        font-size: 28px;
+        font-size: 32px;
+        line-height: 34px;
+        padding-bottom: 8px;
     }
 
     h3 {
+        font-size: 24px;
+    }
+
+    h4 {
         font-size: 18px;
     }
 
-    p {
-        font-size: 14px;
+    html, p {
+        font-size: 18px;
     }
 }
 

@@ -40,7 +40,7 @@ function addNewActivity() {
   let title = document.querySelector('#title').value;
 
   // Fail message
-  if (title == "") {
+  if (title === "") {
     alert('Oops, something is missing. Please fill in the field named "Activity Title".');
   } else {
 
@@ -49,14 +49,14 @@ function addNewActivity() {
     var category = document.querySelector('input[name="cat"]:checked').value;
 
     if ((category == 'dining') || (category == 'city')) {
-      catScore = 3
+      catScore = 3;
     } else if (category == 'outdoor') {
-      catScore = 2
+      catScore = 2;
     } else if ((category == 'amusement') || (category == 'learning')) {
-      catScore = 1
+      catScore = 1;
     } else {
-      catScore = 0
-    };
+      catScore = 0;
+    }
 
     let newActivity = {
       title: document.querySelector('#title').value,
@@ -174,14 +174,14 @@ function editActivity() {
   var category = document.querySelector('#new-cat').value;
 
   if ((category == 'dining') || (category == 'city')) {
-    catScore = 3
+    catScore = 3;
   } else if (category == 'outdoor') {
-    catScore = 2
+    catScore = 2;
   } else if ((category == 'amusement') || (category == 'learning')) {
-    catScore = 1
+    catScore = 1;
   } else {
-    catScore = 0
-  };
+    catScore = 0;
+  }
 
   // Fields
   let title = document.querySelector('#id').value;
@@ -222,7 +222,7 @@ function editActivity() {
   let newWeb = document.querySelector('#new-web').value;
 
   // Fail message
-  if (newTitle == "") {
+  if (newTitle === "") {
     alert('Please fill in the field named "New title".');
   } else {
     let updatedActivity = {
