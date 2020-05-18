@@ -186,6 +186,7 @@ function appendActivities(acts) {
         document.getElementById('map').classList.add('hidden');
         document.getElementById('banner').style.backgroundImage = 'url(uploads/${act.data().img})';
         document.getElementById('mailBtn').classList.remove('hidden');
+        document.getElementById('dist-price').classList.remove('hidden');
         document.getElementById('sendMail').href = 'mailto:${usermail}?subject=${act.data().title}&body=${act.data().street}%0D%0A${act.data().postal}%0D%0A${act.data().city}';
         document.getElementById('webBtn').classList.remove('hidden');
         document.getElementById('webBtn').href = '${act.data().web}';
@@ -247,6 +248,7 @@ function appendActivities(acts) {
         document.getElementById('map').classList.add('hidden');
         document.getElementById('banner').style.backgroundImage = 'url(uploads/${act.data().img})';
         document.getElementById('mailBtn').classList.remove('hidden');
+        document.getElementById('dist-price').classList.remove('hidden');
         document.getElementById('sendMail').href = 'mailto:${usermail}?subject=${act.data().title}&body=${act.data().street}%0D%0A${act.data().postal}%0D%0A${act.data().city}';
         document.getElementById('webBtn').classList.remove('hidden');
         document.getElementById('webBtn').href = '${act.data().web}';
@@ -299,6 +301,7 @@ function returnBtn() {
     document.getElementById('page-title').innerHTML = 'Recommendations';
     document.getElementById('dist-price').innerHTML = '';
     document.getElementById('page-info').innerHTML = '<p>We’ve listed our top picks based on your answers below.<br><br>Don’t like what you see? You can start over and choose new categories.</p>';
+    document.getElementById('dist-price').classList.add('hidden');
     document.getElementById('return').innerHTML = '<h4>Try again</h4>'; 
     document.getElementById('activityGrid').classList.remove('hidden');
     document.getElementById('expand-map').classList.remove('hidden');
