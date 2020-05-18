@@ -61,6 +61,34 @@ p {
   margin: 0 0 8px 0;
 }
 
+button > span {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+a > span {
+  font-family: "Josefine Sans", sans-serif;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 22px;
+  line-height: 24px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.modal-headline {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-size: 42px;
+  line-height: 46px;
+}
+
 label, input {
   font-family: "Josefine Sans", sans-serif;
   font-size: 18px;
@@ -466,7 +494,7 @@ main {
   margin-left: 25px;
 }
 
-#goToWebsite {
+#webBtn {
   background-color: #8e97b5;
   margin-left: 25px;
 }
