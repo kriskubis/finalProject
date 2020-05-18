@@ -118,15 +118,21 @@ main {
 
 @media (min-width: 321px) and (max-width: 767px) {
   h1, h2 {
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 34px;
+    padding-bottom: 8px;
   }
 
   h3 {
+    font-size: 24px;
+  }
+
+  h4 {
     font-size: 18px;
   }
 
-  p {
-    font-size: 14px;
+  html, p {
+    font-size: 18px;
   }
 }
 #admin-nav {
@@ -305,10 +311,17 @@ main {
     background-position: center;
   }
 
+  .introduction p {
+    font-size: 18px;
+  }
+
   .question div {
     display: block;
     width: 100%;
     float: none;
+  }
+  .question p {
+    font-size: 18px;
   }
 }
 @media (min-width: 769px) {
