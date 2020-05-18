@@ -314,3 +314,7 @@ function returnBtn() {
     window.location.pathname = 'tiamoto/index.html';
   }
 }
+
+function returnFront(){
+  window.location.href = '../index.html';
+}

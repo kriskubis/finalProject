@@ -37,5 +37,5 @@ function filter() {
     localStorage.setItem('q3', document.querySelector('input[name="q3"]:checked').value);
     localStorage.setItem('q4', document.querySelector('input[name="q4"]:checked').value);
 
-    window.location.pathname = 'tiamoto/result.html'
+    window.location.href='../result.html';
 };
