@@ -1,6 +1,8 @@
 html {
   margin: 0;
   padding: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
   color: #555555;
   font-family: "Spartan", sans-serif;
   overflow-x: none;
@@ -20,8 +22,8 @@ h2 {
   font-family: "Lora", serif;
   font-weight: 600;
   margin: 0 0 8px 0;
-  font-size: 68px;
-  line-height: 72px;
+  font-size: 56px;
+  line-height: 58px;
 }
 
 h3 {
@@ -64,7 +66,7 @@ p {
 button > span {
   font-family: "Josefine Sans", sans-serif;
   font-weight: 700;
-  margin: 0 0 8px 0;
+  margin: 0 0 0px 0;
   font-size: 22px;
   line-height: 24px;
 }
@@ -79,6 +81,13 @@ a > span {
 
 a {
   text-decoration: none;
+}
+
+.top-nav {
+  position: absolute;
+  z-index: 1;
+  top: 45px;
+  right: 45px;
 }
 
 .modal-headline {
@@ -266,6 +275,10 @@ main {
   padding: 2px 8px;
 }
 
+.lang-option {
+  margin-left: 20px;
+}
+
 #weather {
   background-color: #cbdcf0;
   height: 400px;
@@ -320,6 +333,23 @@ main {
 .question video {
   padding-top: 60px;
   width: 100%;
+}
+
+#q1 input, #q2 input {
+  height: 26px;
+}
+
+#q3 table, #q4 table {
+  text-align: center;
+}
+#q3 table td, #q4 table td {
+  text-align: center;
+  width: 100px;
+}
+#q3 table input[type=radio], #q4 table input[type=radio] {
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 321px) and (max-width: 767px) {
@@ -487,6 +517,10 @@ main {
 
 #return {
   background-color: #df824e;
+}
+
+#frontBtn, #reviewBtn {
+  margin-left: 20px;
 }
 
 #mailBtn {
@@ -679,6 +713,7 @@ p {
 
 #activityGrid {
   height: 100%;
+  padding: 0 45px 45px 45px;
 }
 
 .activityCard {
@@ -749,20 +784,6 @@ p {
   -moz-box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
 }
-
-input[type=radio] {
-  display: block;
-  margin: 0 auto;
-
-}
-label {
-  display: inline-block;
-  margin-right: 10%;
-  font-family: "Spartan", sans-serif;
-  font-size: 1.2em;
-}
-
-
 
 @media (min-width: 321px) and (max-width: 767px) {
   .map {

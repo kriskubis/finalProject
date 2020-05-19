@@ -322,7 +322,3 @@ function returnBtn() {
     window.location.pathname = '/index.html';
   }
 }
-
-function returnFront(){
-  window.location.href = '../index.html';
-}
