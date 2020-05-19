@@ -66,6 +66,29 @@
     }
 }
 
+#q1, #q2 {
+    input {
+        height: 26px;
+    }
+}
+
+#q3, #q4 {
+    table {
+        text-align: center;
+    
+        td {
+            text-align: center;
+            width: 100px;
+        }
+    
+        input[type=radio] {
+            display: block;
+            margin: auto;
+            margin-bottom: 10px;
+        }
+    }
+}
+
 @include media(">phone", "<tablet") {
     #weather {
         height: 200px;
@@ -100,7 +123,6 @@
             font-size: 18px;
         }
     }
-
 }
 
 @include media(">tablet") {
@@ -132,5 +154,4 @@
             width: 100%;
         }
     }
-
 }
