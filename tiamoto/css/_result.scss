@@ -469,4 +469,81 @@ p {
     }
 }
 
-@include media(">tablet") {}
+@include media(">=desktop-large") {
+    .top-nav{
+        right: 5%;
+    }
+
+    #info-wrapper{
+        right: -20%;
+    }
+}
+
+@include media(">=desktop", "<=desktop-large"){
+    .top-nav{
+        right: 5%;
+    }
+  
+    #info-wrapper{
+        right: 50%;
+    }
+
+    .result p{
+        font-size: 19px;
+    }
+
+    .first-column-act {
+        width: 70% !important;
+
+        div {
+            width: 60%;
+    
+            &:nth-of-type(2) {
+                width: 60%;
+                padding-left: 0;
+                
+            }
+        }
+    }
+    
+    .second-column {
+        padding-top: 120px;
+        
+        p {
+            margin: 5px 5px 10.5px 5px;
+        }
+    }
+
+    #mailBtn, #return, #webBtn{
+        height: 5vh;
+    }
+}
+
+@include media(">=phone", "<=tablet"){
+    #banner{
+        height: 30vh;
+    }
+
+       
+    .first-column-act {
+        width: 70% !important;
+
+        div {
+            width: 60%;
+    
+            &:nth-of-type(2) {
+                width: 60%;
+                padding-left: 0;
+                
+            }
+        }
+    }
+    
+    .second-column {
+        padding-top: 120px;
+        
+        p {
+            margin: 5px 5px 10.5px 5px;
+        }
+    }
+}
